@@ -3760,8 +3760,8 @@ trim-off-newlines@^1.0.0:
   resolved "https://registry.npmjs.org/trim-off-newlines/-/trim-off-newlines-1.0.1.tgz"
 
 ts-node@^10.0.0:
-  version "10.2.0"
-  resolved "https://registry.npmjs.org/ts-node/-/ts-node-10.2.0.tgz"
+  version "10.2.1"
+  resolved "https://registry.npmjs.org/ts-node/-/ts-node-10.2.1.tgz#4cc93bea0a7aba2179497e65bb08ddfc198b3ab5"
   dependencies:
     "@cspotcode/source-map-support" "0.6.1"
     "@tsconfig/node10" "^1.0.7"
