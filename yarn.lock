@@ -1446,8 +1446,8 @@ eslint-config-salesforce-license@^0.1.6:
   resolved "https://registry.npmjs.org/eslint-config-salesforce-license/-/eslint-config-salesforce-license-0.1.6.tgz"
 
 eslint-config-salesforce-typescript@^0.2.7:
-  version "0.2.7"
-  resolved "https://registry.npmjs.org/eslint-config-salesforce-typescript/-/eslint-config-salesforce-typescript-0.2.7.tgz"
+  version "0.2.8"
+  resolved "https://registry.npmjs.org/eslint-config-salesforce-typescript/-/eslint-config-salesforce-typescript-0.2.8.tgz#73cbc0e87a30118407d455feabf154fd251f7002"
 
 eslint-config-salesforce@^0.1.6:
   version "0.1.6"
