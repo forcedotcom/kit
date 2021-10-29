@@ -208,7 +208,14 @@ export class Env {
    */
   public getBoolean(key: string, def = false): boolean {
     const value = this.getString(key, def.toString());
-    return value.toLowerCase() === 'true' || value === '1';
+    switch (typeof value) {
+      case 'boolean':
+        return value;
+      case 'string':
+        return value.toLowerCase() === 'true' || value === '1';
+      default:
+        return false;
+    }
   }
 
   /**
