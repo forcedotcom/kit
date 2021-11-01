@@ -84,3 +84,20 @@ export function upperFirst(value?: string): Optional<string>;
 export function upperFirst(value?: string): Optional<string> {
   return value && value.charAt(0).toUpperCase() + value.slice(1);
 }
+
+/**
+ * Converts value to a boolean.
+ *
+ * @param value The value to convert
+ * @returns boolean
+ */
+export function toBoolean(value: unknown): boolean {
+  switch (typeof value) {
+    case 'boolean':
+      return value;
+    case 'string':
+      return value.toLowerCase() === 'true' || value === '1';
+    default:
+      return false;
+  }
+}

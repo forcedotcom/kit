@@ -104,4 +104,15 @@ describe('nodash internal', () => {
       expect(result).to.equal('Foo Bar');
     });
   });
+
+  describe('toBoolean', () => {
+    it('should return true given a string set to 1', () => {
+      expect(_.toBoolean('1')).to.equal(true);
+    });
+
+    it('should return false given any string that is not 1 or a boolean value', () => {
+      expect(_.toBoolean('0')).to.equal(false);
+      expect(_.toBoolean('sfdx')).to.equal(false);
+    });
+  });
 });
