@@ -7,7 +7,7 @@
 
 import { definiteEntriesOf, Dictionary, isKeyOf, KeyValue, Nullable, Optional, isNumber } from '@salesforce/ts-types';
 import { InvalidDefaultEnvValueError } from './errors';
-import { toNumber } from './nodash';
+import { toNumber, toBoolean } from './nodash';
 
 /**
  * An injectable abstraction on top of `process.env` with various convenience functions
@@ -208,7 +208,7 @@ export class Env {
    */
   public getBoolean(key: string, def = false): boolean {
     const value = this.getString(key, def.toString());
-    return value.toLowerCase() === 'true' || value === '1';
+    return toBoolean(value);
   }
 
   /**
