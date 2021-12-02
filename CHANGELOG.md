@@ -2,13 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### 1.5.18 (2021-11-11)
+### [1.5.19](https://github.com/forcedotcom/kit/compare/v1.5.18...v1.5.19) (2021-12-02)
 
+### 1.5.18 (2021-11-11)
 
 ### Features
 
-* configurations ([b8a27ab](https://github.com/forcedotcom/kit/commit/b8a27abccb0b38e0fb9e63d6d174684106b397e7))
-* initialize repository ([1cf9a37](https://github.com/forcedotcom/kit/commit/1cf9a37bbc9f34962498ad82d618689a7c6c6804))
+- configurations ([b8a27ab](https://github.com/forcedotcom/kit/commit/b8a27abccb0b38e0fb9e63d6d174684106b397e7))
+- initialize repository ([1cf9a37](https://github.com/forcedotcom/kit/commit/1cf9a37bbc9f34962498ad82d618689a7c6c6804))
 
 ## [1.5.17](https://github.com/forcedotcom/sfdx-dev-packages/compare/@salesforce/kit@1.5.16...@salesforce/kit@1.5.17) (2021-07-09)
 
