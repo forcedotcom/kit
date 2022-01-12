@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.28](https://github.com/forcedotcom/kit/compare/v1.5.26...v1.5.28) (2022-01-12)
+
+### Bug Fixes
+
+- bump version for release ([776c78d](https://github.com/forcedotcom/kit/commit/776c78d791ae4a9c55013b370deb4199932eec58))
+- package.json dep change ([18a891a](https://github.com/forcedotcom/kit/commit/18a891a09401e8025aaf8704c7c7e6842ce76355))
+- whoops ([cf6e184](https://github.com/forcedotcom/kit/commit/cf6e18418ce2d3c126ad8a604df3a6caa6eb8522))
+
 ### [1.5.26](https://github.com/forcedotcom/kit/compare/v1.5.25...v1.5.26) (2022-01-07)
 
 ### [1.5.25](https://github.com/forcedotcom/kit/compare/v1.5.24...v1.5.25) (2022-01-02)
