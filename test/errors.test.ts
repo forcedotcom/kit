@@ -39,7 +39,7 @@ describe('JsonParseError', () => {
       JSON.parse(data);
       expect.fail(null, null, 'Should be unreachable');
     } catch (err) {
-      const jsonErr = JsonParseError.create(err, data, 'fake.json');
+      const jsonErr = JsonParseError.create(err as SyntaxError, data, 'fake.json');
       expect(jsonErr.cause).to.equal(err);
       expect(jsonErr.name).to.equal('JsonParseError');
       expect(jsonErr.path).to.equal('fake.json');
@@ -55,7 +55,7 @@ describe('JsonParseError', () => {
       JSON.parse(data);
       expect.fail(null, null, 'Should be unreachable');
     } catch (err) {
-      const jsonErr = JsonParseError.create(err, data, 'fake.json');
+      const jsonErr = JsonParseError.create(err as SyntaxError, data, 'fake.json');
       expect(jsonErr.cause).to.equal(err);
       expect(jsonErr.name).to.equal('JsonParseError');
       expect(jsonErr.path).to.equal('fake.json');

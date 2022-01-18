@@ -31,7 +31,7 @@ export function parseJson(data: string, jsonPath?: string, throwOnEmpty = true):
   try {
     return JSON.parse(data) as AnyJson;
   } catch (error) {
-    throw JsonParseError.create(error, data, jsonPath);
+    throw JsonParseError.create(error as SyntaxError, data, jsonPath);
   }
 }
 
@@ -91,7 +91,10 @@ export function cloneJson<T extends object>(obj: T): T {
   try {
     return JSON.parse(JSON.stringify(obj)) as T;
   } catch (err) {
-    throw new JsonStringifyError(err);
+    if (err instanceof SyntaxError || err instanceof TypeError) {
+      throw new JsonStringifyError(err);
+    }
+    throw err;
   }
 }
 
