@@ -45,57 +45,46 @@ export class Duration {
   }
 
   /**
-   * Returns a new `Duration` instance created from the specified number of milliseconds.
-   *
-   * @param quantity The number of milliseconds.
+   * Returns the current number of minutes represented by this `Duration` instance, rounded to the nearest integer
+   * value.
    */
-  public static milliseconds(quantity: number): Duration {
-    return new Duration(quantity, Duration.Unit.MILLISECONDS);
+  public get minutes(): number {
+    switch (this.unit) {
+      case Duration.Unit.MILLISECONDS:
+        return Math.round(this.quantity / Duration.MILLIS_IN_SECONDS / Duration.SECONDS_IN_MINUTE);
+      case Duration.Unit.SECONDS:
+        return Math.round(this.quantity / Duration.SECONDS_IN_MINUTE);
+      case Duration.Unit.MINUTES:
+        return this.quantity;
+      case Duration.Unit.HOURS:
+        return this.quantity * Duration.MINUTES_IN_HOUR;
+      case Duration.Unit.DAYS:
+        return this.quantity * Duration.MINUTES_IN_HOUR * Duration.HOURS_IN_DAY;
+      case Duration.Unit.WEEKS:
+        return this.quantity * Duration.MINUTES_IN_HOUR * Duration.HOURS_IN_DAY * Duration.DAYS_IN_WEEK;
+    }
   }
 
   /**
-   * Returns a new `Duration` instance created from the specified number of seconds.
-   *
-   * @param quantity The number of seconds.
+   * Returns the current number of hours represented by this `Duration` instance.
    */
-  public static seconds(quantity: number): Duration {
-    return new Duration(quantity, Duration.Unit.SECONDS);
-  }
-
-  /**
-   * Returns a new `Duration` instance created from the specified number of minutes.
-   *
-   * @param quantity The number of minutes.
-   */
-  public static minutes(quantity: number): Duration {
-    return new Duration(quantity, Duration.Unit.MINUTES);
-  }
-
-  /**
-   * Returns a new `Duration` instance created from the specified number of hours.
-   *
-   * @param quantity The number of hours.
-   */
-  public static hours(quantity: number): Duration {
-    return new Duration(quantity, Duration.Unit.HOURS);
-  }
-
-  /**
-   * Returns a new `Duration` instance created from the specified number of days.
-   *
-   * @param quantity The number of days.
-   */
-  public static days(quantity: number): Duration {
-    return new Duration(quantity, Duration.Unit.DAYS);
-  }
-
-  /**
-   * Returns a new `Duration` instance created from the specified number of weeks.
-   *
-   * @param quantity The number of weeks.
-   */
-  public static weeks(quantity: number): Duration {
-    return new Duration(quantity, Duration.Unit.WEEKS);
+  public get hours(): number {
+    switch (this.unit) {
+      case Duration.Unit.MILLISECONDS:
+        return Math.round(
+          this.quantity / Duration.MILLIS_IN_SECONDS / Duration.SECONDS_IN_MINUTE / Duration.MINUTES_IN_HOUR
+        );
+      case Duration.Unit.SECONDS:
+        return Math.round(this.quantity / Duration.SECONDS_IN_MINUTE / Duration.MINUTES_IN_HOUR);
+      case Duration.Unit.MINUTES:
+        return Math.round(this.quantity / Duration.MINUTES_IN_HOUR);
+      case Duration.Unit.HOURS:
+        return this.quantity;
+      case Duration.Unit.DAYS:
+        return this.quantity * Duration.HOURS_IN_DAY;
+      case Duration.Unit.WEEKS:
+        return this.quantity * Duration.HOURS_IN_DAY * Duration.DAYS_IN_WEEK;
+    }
   }
 
   /**
@@ -159,49 +148,6 @@ export class Duration {
   }
 
   /**
-   * Returns the current number of minutes represented by this `Duration` instance, rounded to the nearest integer
-   * value.
-   */
-  public get minutes(): number {
-    switch (this.unit) {
-      case Duration.Unit.MILLISECONDS:
-        return Math.round(this.quantity / Duration.MILLIS_IN_SECONDS / Duration.SECONDS_IN_MINUTE);
-      case Duration.Unit.SECONDS:
-        return Math.round(this.quantity / Duration.SECONDS_IN_MINUTE);
-      case Duration.Unit.MINUTES:
-        return this.quantity;
-      case Duration.Unit.HOURS:
-        return this.quantity * Duration.MINUTES_IN_HOUR;
-      case Duration.Unit.DAYS:
-        return this.quantity * Duration.MINUTES_IN_HOUR * Duration.HOURS_IN_DAY;
-      case Duration.Unit.WEEKS:
-        return this.quantity * Duration.MINUTES_IN_HOUR * Duration.HOURS_IN_DAY * Duration.DAYS_IN_WEEK;
-    }
-  }
-
-  /**
-   * Returns the current number of hours represented by this `Duration` instance.
-   */
-  public get hours(): number {
-    switch (this.unit) {
-      case Duration.Unit.MILLISECONDS:
-        return Math.round(
-          this.quantity / Duration.MILLIS_IN_SECONDS / Duration.SECONDS_IN_MINUTE / Duration.MINUTES_IN_HOUR
-        );
-      case Duration.Unit.SECONDS:
-        return Math.round(this.quantity / Duration.SECONDS_IN_MINUTE / Duration.MINUTES_IN_HOUR);
-      case Duration.Unit.MINUTES:
-        return Math.round(this.quantity / Duration.MINUTES_IN_HOUR);
-      case Duration.Unit.HOURS:
-        return this.quantity;
-      case Duration.Unit.DAYS:
-        return this.quantity * Duration.HOURS_IN_DAY;
-      case Duration.Unit.WEEKS:
-        return this.quantity * Duration.HOURS_IN_DAY * Duration.DAYS_IN_WEEK;
-    }
-  }
-
-  /**
    * Returns the current number of days represented by this `Duration` instance.
    */
   public get days(): number {
@@ -260,6 +206,60 @@ export class Duration {
       case Duration.Unit.WEEKS:
         return this.quantity;
     }
+  }
+
+  /**
+   * Returns a new `Duration` instance created from the specified number of milliseconds.
+   *
+   * @param quantity The number of milliseconds.
+   */
+  public static milliseconds(quantity: number): Duration {
+    return new Duration(quantity, Duration.Unit.MILLISECONDS);
+  }
+
+  /**
+   * Returns a new `Duration` instance created from the specified number of seconds.
+   *
+   * @param quantity The number of seconds.
+   */
+  public static seconds(quantity: number): Duration {
+    return new Duration(quantity, Duration.Unit.SECONDS);
+  }
+
+  /**
+   * Returns a new `Duration` instance created from the specified number of minutes.
+   *
+   * @param quantity The number of minutes.
+   */
+  public static minutes(quantity: number): Duration {
+    return new Duration(quantity, Duration.Unit.MINUTES);
+  }
+
+  /**
+   * Returns a new `Duration` instance created from the specified number of hours.
+   *
+   * @param quantity The number of hours.
+   */
+  public static hours(quantity: number): Duration {
+    return new Duration(quantity, Duration.Unit.HOURS);
+  }
+
+  /**
+   * Returns a new `Duration` instance created from the specified number of days.
+   *
+   * @param quantity The number of days.
+   */
+  public static days(quantity: number): Duration {
+    return new Duration(quantity, Duration.Unit.DAYS);
+  }
+
+  /**
+   * Returns a new `Duration` instance created from the specified number of weeks.
+   *
+   * @param quantity The number of weeks.
+   */
+  public static weeks(quantity: number): Duration {
+    return new Duration(quantity, Duration.Unit.WEEKS);
   }
 
   /**
