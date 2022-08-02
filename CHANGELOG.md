@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.5.45](https://github.com/forcedotcom/kit/compare/v1.5.44...v1.5.45) (2022-08-02)
+
 ### [1.5.44](https://github.com/forcedotcom/kit/compare/v1.5.43...v1.5.44) (2022-07-02)
 
 ### [1.5.43](https://github.com/forcedotcom/kit/compare/v1.5.42...v1.5.43) (2022-07-02)
