@@ -14,7 +14,7 @@ import { toNumber, toBoolean } from './nodash';
  * for accessing environment variables of different anticipated shapes.
  */
 export class Env {
-  public constructor(private store: Dictionary<string> = (process && process.env) || {}) {
+  public constructor(private store: Dictionary<string> = process?.env || {}) {
     this.store = store;
   }
 
@@ -33,7 +33,7 @@ export class Env {
   public getString(key: string, def: string): string;
   // underlying method
   public getString(key: string, def?: string): Optional<string> {
-    return this.store[key] || def;
+    return this.store[key] ?? def;
   }
 
   /**
