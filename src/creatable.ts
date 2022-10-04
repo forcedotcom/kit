@@ -57,7 +57,7 @@ export abstract class AsyncOptionalCreatable<O = object> {
    *
    * @param options An options object providing initialization params to the async constructor.
    */
-  public static async create<P, T extends AsyncOptionalCreatable<P>>(
+  public static async create<P extends Record<string, unknown>, T extends AsyncOptionalCreatable<P>>(
     this: new (opts?: P) => T,
     options?: P
   ): Promise<T> {
