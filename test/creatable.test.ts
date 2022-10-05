@@ -65,6 +65,7 @@ class OptionalConfig extends AsyncOptionalCreatable<OptionalConfig.Options> {
     return this.options ? this.options.bazEnabled : false;
   }
 
+  // eslint-disable-next-line class-methods-use-this
   protected async init(): Promise<void> {
     // Imagine cool async stuff here
   }
@@ -81,6 +82,7 @@ class NoOptionsConfig extends AsyncOptionalCreatable {
     super();
   }
 
+  // eslint-disable-next-line class-methods-use-this
   protected async init(): Promise<void> {
     // Imagine cool async stuff here
   }

@@ -60,14 +60,11 @@ export function snakeCase(str: string): string;
 export function snakeCase(str?: string): Optional<string>;
 // underlying function
 export function snakeCase(str?: string): Optional<string> {
-  return (
-    str &&
-    str
-      .replace(/([a-z])([A-Z])/g, '$1_$2')
-      .toLowerCase()
-      .replace(/\W/g, '_')
-      .replace(/^_+|_+$/g, '')
-  );
+  return str
+    ?.replace(/([a-z])([A-Z])/g, '$1_$2')
+    .toLowerCase()
+    .replace(/\W/g, '_')
+    .replace(/^_+|_+$/g, '');
 }
 
 /**
