@@ -12,3 +12,4 @@ export * from './errors';
 export * from './json';
 export * from './nodash';
 export * from './collections';
+export * from './throttledPromiseAll';
