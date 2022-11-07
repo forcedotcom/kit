@@ -45,7 +45,7 @@ describe('throttledPromiseAll', () => {
     const results = throttledPromiseAll.getResults() as number[];
     expect(results).to.deep.equal([1, 2, 3, 4, 5].map((i) => i + 1));
   });
-  it('should should reject', async () => {
+  it('should reject', async () => {
     try {
       const throttledPromiseAll: ThrottledPromiseAll<number, number> = new ThrottledPromiseAll({
         concurrency: 1,
@@ -57,7 +57,7 @@ describe('throttledPromiseAll', () => {
       expect((e as Error).message).to.equal('Promise 1 rejected');
     }
   });
-  it('should should timeout', async () => {
+  it('should timeout', async () => {
     try {
       const throttledPromiseAll: ThrottledPromiseAll<number, number> = new ThrottledPromiseAll({
         concurrency: 1,
