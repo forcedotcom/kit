@@ -35,9 +35,9 @@ export type PromiseItem<T, O = T | undefined> = {
  * ```
  */
 export class ThrottledPromiseAll<T, O = T> {
+  readonly #results: Array<O | undefined> = [];
   private readonly queue: Array<PromiseItem<T, O | undefined>>;
   private readonly concurrency: number;
-  private results: Array<O | undefined> = [];
   private wait: Duration;
   private timeout: NodeJS.Timeout | undefined;
 
@@ -50,6 +50,13 @@ export class ThrottledPromiseAll<T, O = T> {
     this.queue = [];
     this.concurrency = options.concurrency;
     this.wait = options.timeout ?? Duration.milliseconds(0);
+  }
+
+  /**
+   * Returns the results of the promises that have been resolved.
+   */
+  public get results(): Array<O | undefined> {
+    return this.#results;
   }
 
   /**
@@ -100,18 +107,11 @@ export class ThrottledPromiseAll<T, O = T> {
         await this.dequeue();
       }
       this.stop();
-      return this.results;
+      return this.#results;
     } catch (e) {
       this.stop();
       throw e;
     }
-  }
-
-  /**
-   * Returns the results of the promises that have been resolved.
-   */
-  public getResults(): Array<O | undefined> {
-    return this.results;
   }
 
   private stop(): void {
@@ -127,7 +127,7 @@ export class ThrottledPromiseAll<T, O = T> {
       const results = await Promise.all(
         next.map((item) => item.producer(item.source, this).catch((e) => Promise.reject(e)))
       );
-      this.results.push(...results);
+      this.#results.push(...results);
     }
   }
 }

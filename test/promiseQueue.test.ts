@@ -22,7 +22,7 @@ describe('throttledPromiseAll', () => {
       throttledPromiseAll.add(i, numberProducer);
     }
     await throttledPromiseAll.all();
-    const results = throttledPromiseAll.getResults() as number[];
+    const results = throttledPromiseAll.results as number[];
     expect(results).to.deep.equal([1, 2, 3, 4, 5].map((i) => i + 1));
   });
   it('should execute promises in groups of 2 - auto start', async () => {
@@ -32,7 +32,7 @@ describe('throttledPromiseAll', () => {
       throttledPromiseAll.add(i, numberProducer);
     }
     await throttledPromiseAll.all();
-    const results = throttledPromiseAll.getResults() as number[];
+    const results = throttledPromiseAll.results as number[];
     expect(results).to.deep.equal([1, 2, 3, 4, 5].map((i) => i + 1));
   });
   it('should execute promises in groups of 10 - auto start', async () => {
@@ -42,7 +42,7 @@ describe('throttledPromiseAll', () => {
       throttledPromiseAll.add(i, numberProducer);
     }
     await throttledPromiseAll.all();
-    const results = throttledPromiseAll.getResults() as number[];
+    const results = throttledPromiseAll.results as number[];
     expect(results).to.deep.equal([1, 2, 3, 4, 5].map((i) => i + 1));
   });
   it('should reject', async () => {
@@ -84,7 +84,7 @@ describe('throttledPromiseAll', () => {
       }
     );
     await throttledPromiseAll.all();
-    const results = throttledPromiseAll.getResults() as number[];
+    const results = throttledPromiseAll.results as number[];
     expect(results).to.deep.equal([1, 2, 3, 4, 5].map((i) => i + 1));
   });
 });
