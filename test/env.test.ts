@@ -186,6 +186,7 @@ describe('Env', () => {
 
   it('should get NaN for invalid numbers', () => {
     env.setString('NUM6', 'invalid');
+    // casing because we know it's the string 'invalid'
     expect(isNaN(env.getNumber('NUM6') as number)).to.be.true;
   });
 

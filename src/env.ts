@@ -231,7 +231,9 @@ export class Env {
    * @param key The name of the envar.
    * @param def A default number, which itself defaults to `undefined` if not otherwise supplied.
    */
-  public getNumber(key: string, def?: number): Optional<number> {
+  public getNumber(key: string, def: number): number;
+  public getNumber(key: string, def?: undefined): Optional<number>;
+  public getNumber(key: string, def?: number | undefined): Optional<number> {
     const value = this.getString(key);
     if (value) {
       const num = toNumber(value);
