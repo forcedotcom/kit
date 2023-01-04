@@ -1,3 +1,12 @@
+## [1.8.2](https://github.com/forcedotcom/kit/compare/1.8.1...1.8.2) (2023-01-04)
+
+
+### Bug Fixes
+
+* **deps:** bump json5 from 1.0.1 to 1.0.2 ([f2ffba8](https://github.com/forcedotcom/kit/commit/f2ffba8ef81bbc804e61416347e424dfb47eee5d))
+
+
+
 ## [1.8.1](https://github.com/forcedotcom/kit/compare/1.8.0...1.8.1) (2023-01-03)
 
 
