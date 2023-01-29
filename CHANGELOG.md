@@ -1,3 +1,12 @@
+## [1.8.4](https://github.com/forcedotcom/kit/compare/1.8.3...1.8.4) (2023-01-29)
+
+
+### Bug Fixes
+
+* **deps:** bump tslib from 2.4.1 to 2.5.0 ([adbf371](https://github.com/forcedotcom/kit/commit/adbf371d866c1a854c0823a0200315019bc5fccf))
+
+
+
 ## [1.8.3](https://github.com/forcedotcom/kit/compare/1.8.2...1.8.3) (2023-01-15)
 
 
