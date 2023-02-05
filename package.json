@@ -30,7 +30,7 @@
     "test": "sf-test"
   },
   "dependencies": {
-    "@salesforce/ts-types": "^1.7.2",
+    "@salesforce/ts-types": "^1.7.3",
     "shx": "^0.3.3",
     "tslib": "^2.5.0"
   },
