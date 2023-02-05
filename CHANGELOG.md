@@ -1,3 +1,12 @@
+## [1.8.5](https://github.com/forcedotcom/kit/compare/1.8.4...1.8.5) (2023-02-05)
+
+
+### Bug Fixes
+
+* **deps:** bump @salesforce/ts-types from 1.7.2 to 1.7.3 ([d13deff](https://github.com/forcedotcom/kit/commit/d13deffd0b5a8f106eca8c2e7b46c780c15b1b92))
+
+
+
 ## [1.8.4](https://github.com/forcedotcom/kit/compare/1.8.3...1.8.4) (2023-01-29)
 
 
