@@ -13,3 +13,4 @@ export * from './json';
 export * from './nodash';
 export * from './collections';
 export * from './throttledPromiseAll';
+export * from './settleAll';
