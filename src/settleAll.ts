@@ -9,34 +9,27 @@ export type SettledResult<T, E = Error> = {
   rejected: E[];
 };
 
+/** narrow promise.allSettled results to the successes, with provided type */
+export const isFulfilled = <T>(s: PromiseSettledResult<T>): s is PromiseFulfilledResult<T> => s.status === 'fulfilled';
+
+/** narrow promise.allSettled results to the faiures.  Result is untyped */
+export const isRejected = (s: PromiseSettledResult<unknown>): s is PromiseRejectedResult => s.status === 'rejected';
+
+/**
+ * Wrapper for promise.allSettled that returns typed errors
+ *
+ * @param promises Array of promises to settle
+ *
+ * @example
+ * ```
+ * const promises = [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)];
+ * const { fulfilled, rejected } = await settleAll<number, SfError>(promises);
+ * ```
+ */
 export async function settleAll<T, E = Error>(promises: Array<Promise<T>>): Promise<SettledResult<T, E>> {
-  const settled: SettledResult<T, E> = {
-    fulfilled: [],
-    rejected: [],
-  };
-
   const allSettled = await Promise.allSettled(promises);
-  settled.fulfilled = allSettled
-    .filter((s) => s.status === 'fulfilled')
-    .map((s) => {
-      if (s.status === 'fulfilled') {
-        return s.value as T;
-      } else {
-        return undefined;
-      }
-    })
-    .filter((v) => v !== undefined) as T[];
-
-  settled.rejected = allSettled
-    .filter((s) => s.status === 'rejected')
-    .map((s) => {
-      if (s.status === 'rejected') {
-        return s.reason as E;
-      } else {
-        return undefined;
-      }
-    })
-    .filter((v) => v !== undefined) as E[];
-
-  return settled;
+  return {
+    fulfilled: allSettled.filter(isFulfilled).map((s): T => s.value),
+    rejected: allSettled.filter(isRejected).map((s): E => s.reason as E),
+  };
 }
