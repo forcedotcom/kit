@@ -1,3 +1,12 @@
+# [1.9.0](https://github.com/forcedotcom/kit/compare/1.8.5...1.9.0) (2023-02-20)
+
+
+### Features
+
+* add settleAll with types ([6401632](https://github.com/forcedotcom/kit/commit/6401632d179fdbb8e52d1af2682e197581986410))
+
+
+
 ## [1.8.5](https://github.com/forcedotcom/kit/compare/1.8.4...1.8.5) (2023-02-05)
 
 
