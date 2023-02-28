@@ -90,7 +90,9 @@ export class ThrottledPromiseAll<T, O = T> {
         timeoutPromise = new Promise((resolve, reject) => {
           this.timeout = setTimeout(() => {
             try {
-              clearTimeout(this.timeout);
+              if (this.timeout) {
+                clearTimeout(this.timeout);
+              }
               this.stop();
               reject(new Error(`PromiseQueue timed out after ${this.wait.milliseconds} milliseconds`));
             } catch (e) {
@@ -115,7 +117,9 @@ export class ThrottledPromiseAll<T, O = T> {
   }
 
   private stop(): void {
-    clearTimeout(this.timeout);
+    if (this.timeout) {
+      clearTimeout(this.timeout);
+    }
     this.queue.splice(0, this.queue.length);
   }
 
