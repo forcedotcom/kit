@@ -23,7 +23,6 @@
     "lint": "wireit",
     "lint-fix": "yarn sf-lint --fix",
     "lodash": "./scripts/build-lodash.sh",
-    "postcompile": "shx cp -r src/nodash/support.d.ts lib/nodash",
     "prepack": "sf-prepack",
     "prepare": "sf-install",
     "test": "wireit",
