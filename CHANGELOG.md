@@ -1,3 +1,16 @@
+## [1.9.2](https://github.com/forcedotcom/kit/compare/1.9.1...1.9.2) (2023-03-06)
+
+
+### Bug Fixes
+
+* ensuer support types are exported ([eb564ca](https://github.com/forcedotcom/kit/commit/eb564cabc895d0fd1af94df708c162c485381958))
+
+
+
+## [1.9.1](https://github.com/forcedotcom/kit/compare/1.9.0...1.9.1) (2023-03-06)
+
+
+
 # [1.9.0](https://github.com/forcedotcom/kit/compare/1.8.5...1.9.0) (2023-02-20)
 
 
