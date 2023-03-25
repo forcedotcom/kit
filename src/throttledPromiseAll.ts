@@ -35,11 +35,11 @@ export type PromiseItem<T, O = T | undefined> = {
  * ```
  */
 export class ThrottledPromiseAll<T, O = T> {
-  readonly #results: Array<O | undefined> = [];
   private readonly queue: Array<PromiseItem<T, O | undefined>>;
   private readonly concurrency: number;
   private wait: Duration;
   private timeout: NodeJS.Timeout | undefined;
+  readonly #results: Array<O | undefined> = [];
 
   /**
    * Construct a new ThrottledPromiseAll.
