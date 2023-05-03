@@ -838,10 +838,10 @@
   version "0.0.2"
   resolved "https://registry.npmjs.org/@salesforce/prettier-config/-/prettier-config-0.0.2.tgz"
 
-"@salesforce/ts-types@^1.7.3":
-  version "1.7.3"
-  resolved "https://registry.npmjs.org/@salesforce/ts-types/-/ts-types-1.7.3.tgz#89b79ff0aaa55fea9f2de0afa8e515be3e17d0d8"
-  integrity sha512-jpmekGqZ7tpHRJwf1rF0yBJ/IMC5mOrryNi4HZkKuNQn8RF97WpynmL8Om04mLTCESvCiif3y7NWfIcxtID2Gw==
+"@salesforce/ts-types@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.npmjs.org/@salesforce/ts-types/-/ts-types-2.0.1.tgz#3b050f28555ae4e83f5b73142543809dd88bb879"
+  integrity sha512-IeAoyfisrXiCgHkpgqp+jSRI84sRiJTz86WRxCcAUeDZ/j6M/WPk1xuNTdpxME90xBAUaR/8auUqnU7Kne3r2g==
   dependencies:
     tslib "^2.5.0"
 
@@ -4023,7 +4023,7 @@ minimist-options@4.1.0:
     is-plain-obj "^1.1.0"
     kind-of "^6.0.3"
 
-minimist@^1.1.0, minimist@^1.2.0, minimist@^1.2.3, minimist@^1.2.5, minimist@^1.2.6:
+minimist@^1.1.0, minimist@^1.2.0, minimist@^1.2.5, minimist@^1.2.6:
   version "1.2.8"
   resolved "https://registry.npmjs.org/minimist/-/minimist-1.2.8.tgz#c1a464e7693302e082a075cee0c057741ac4772c"
   integrity sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==
@@ -5195,14 +5195,6 @@ shiki@^0.11.1:
     jsonc-parser "^3.0.0"
     vscode-oniguruma "^1.6.1"
     vscode-textmate "^6.0.0"
-
-shx@^0.3.3:
-  version "0.3.4"
-  resolved "https://registry.npmjs.org/shx/-/shx-0.3.4.tgz#74289230b4b663979167f94e1935901406e40f02"
-  integrity sha512-N6A9MLVqjxZYcVn8hLmtneQWIJtp8IKzMP4eMnx+nqkvXoqinUPCbUFLp2UcWTEIUONhlk0ewxr/jaVGlc+J+g==
-  dependencies:
-    minimist "^1.2.3"
-    shelljs "^0.8.5"
 
 side-channel@^1.0.4:
   version "1.0.4"

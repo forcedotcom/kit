@@ -29,8 +29,7 @@
     "test:only": "wireit"
   },
   "dependencies": {
-    "@salesforce/ts-types": "^1.7.3",
-    "shx": "^0.3.3",
+    "@salesforce/ts-types": "^2.0.1",
     "tslib": "^2.5.0"
   },
   "devDependencies": {
