@@ -1,3 +1,22 @@
+# [3.0.0](https://github.com/forcedotcom/kit/compare/1.9.2...3.0.0) (2023-05-03)
+
+
+### Features
+
+* require node16 ([#207](https://github.com/forcedotcom/kit/issues/207)) ([b1435e3](https://github.com/forcedotcom/kit/commit/b1435e394eea7ca994358e1b30d2f8e270048238))
+
+
+### BREAKING CHANGES
+
+* no intended functionality change,
+but major versioned to avoid breaking  consumers still on node14
+
+* chore: bump jsdoc plugin
+
+* chore: bump ts-types, remove shx dep
+
+
+
 ## [1.9.2](https://github.com/forcedotcom/kit/compare/1.9.1...1.9.2) (2023-03-06)
 
 
