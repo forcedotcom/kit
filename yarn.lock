@@ -843,12 +843,12 @@
   resolved "https://registry.npmjs.org/@salesforce/prettier-config/-/prettier-config-0.0.3.tgz#ba648d4886bb38adabe073dbea0b3a91b3753bb0"
   integrity sha512-hYOhoPTCSYMDYn+U1rlEk16PoBeAJPkrdg4/UtAzupM1mRRJOwEPMG1d7U8DxJFKuXW3DMEYWr2MwAIBDaHmFg==
 
-"@salesforce/ts-types@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.npmjs.org/@salesforce/ts-types/-/ts-types-2.0.1.tgz#3b050f28555ae4e83f5b73142543809dd88bb879"
-  integrity sha512-IeAoyfisrXiCgHkpgqp+jSRI84sRiJTz86WRxCcAUeDZ/j6M/WPk1xuNTdpxME90xBAUaR/8auUqnU7Kne3r2g==
+"@salesforce/ts-types@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.npmjs.org/@salesforce/ts-types/-/ts-types-2.0.2.tgz#44c2ab3a765b57a9a285f2be31a661ac5b373ac3"
+  integrity sha512-FxQnTtdn9mcnGpc6qxQbpP+0CnDY1OcMNM+QL+TgC5uSyxnzo6vBrK7OenrK9jdgfvJZAKH1PjeAj2QahbpBwQ==
   dependencies:
-    tslib "^2.5.0"
+    tslib "^2.5.2"
 
 "@sindresorhus/is@^4.0.0":
   version "4.6.0"
