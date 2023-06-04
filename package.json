@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@salesforce/ts-types": "^2.0.2",
-    "tslib": "^2.5.2"
+    "tslib": "^2.5.3"
   },
   "devDependencies": {
     "@salesforce/dev-config": "^4.0.1",
