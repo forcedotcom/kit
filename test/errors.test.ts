@@ -5,6 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+import { versions } from 'process';
 import { expect } from 'chai';
 import { JsonParseError, NamedError } from '../src/errors';
 
@@ -50,6 +51,7 @@ describe('JsonParseError', () => {
   });
 
   it('should create with error parsing {', () => {
+    const nodeVersion = parseInt(versions.node.split('.')[0], 10);
     const data = '{';
     try {
       JSON.parse(data);
@@ -59,9 +61,18 @@ describe('JsonParseError', () => {
       expect(jsonErr.cause).to.equal(err);
       expect(jsonErr.name).to.equal('JsonParseError');
       expect(jsonErr.path).to.equal('fake.json');
-      expect(jsonErr.line).to.be.undefined;
-      expect(jsonErr.errorPortion).to.be.undefined;
-      expect(jsonErr.message).to.equal('Unexpected end of JSON input');
+
+      if (nodeVersion >= 20) {
+        expect(jsonErr.line).to.equal(1);
+        expect(jsonErr.errorPortion).to.equal(data);
+        expect(jsonErr.message).to.contain('Parse error in file fake.json on line 1');
+        expect(jsonErr.message).to.contain(data);
+      } else {
+        expect(jsonErr.line).to.be.undefined;
+        expect(jsonErr.errorPortion).to.be.undefined;
+
+        expect(jsonErr.message).to.equal('Unexpected end of JSON input');
+      }
     }
   });
 });
