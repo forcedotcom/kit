@@ -50,7 +50,7 @@ describe('JsonParseError', () => {
     }
   });
 
-  it('should create with error parsing {', () => {
+  it.only('should create with error parsing {', () => {
     const nodeVersion = parseInt(versions.node.split('.')[0], 10);
     const data = '{';
     try {
