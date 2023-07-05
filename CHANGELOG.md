@@ -1,3 +1,12 @@
+## [3.0.4](https://github.com/forcedotcom/kit/compare/3.0.3...3.0.4) (2023-07-05)
+
+
+### Bug Fixes
+
+* make promise throttle level consistent ([#240](https://github.com/forcedotcom/kit/issues/240)) ([8778166](https://github.com/forcedotcom/kit/commit/877816675a17d2ba2c8811d1c4dd84ce0f10450c))
+
+
+
 ## [3.0.3](https://github.com/forcedotcom/kit/compare/3.0.2...3.0.3) (2023-06-04)
 
 
