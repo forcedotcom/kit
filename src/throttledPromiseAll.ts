@@ -65,8 +65,7 @@ export class ThrottledPromiseAll<T, O = T> {
    * Returns the results of the promises that have been resolved.
    */
   public get results(): Array<O | undefined> {
-    const results = this.#results;
-    return results.sort((a, b) => (a?.index ?? 0) - (b?.index ?? 0)).map((r) => r?.result);
+    return this.#results.sort((a, b) => (a?.index ?? 0) - (b?.index ?? 0)).map((r) => r?.result);
   }
 
   /**
