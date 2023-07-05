@@ -13,7 +13,7 @@
  */
 
 export const ensureArray = <T>(entryOrArray: T | T[] | undefined): T[] => {
-  if (entryOrArray) {
+  if (entryOrArray !== undefined && entryOrArray !== null) {
     return Array.isArray(entryOrArray) ? entryOrArray : [entryOrArray];
   }
   return [];

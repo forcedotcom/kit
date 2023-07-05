@@ -65,7 +65,8 @@ export class ThrottledPromiseAll<T, O = T> {
    * Returns the results of the promises that have been resolved.
    */
   public get results(): Array<O | undefined> {
-    return this.#results.sort((a, b) => (a?.index ?? 0) - (b?.index ?? 0)).map((r) => r?.result);
+    const results = this.#results;
+    return results.sort((a, b) => (a?.index ?? 0) - (b?.index ?? 0)).map((r) => r?.result);
   }
 
   /**
@@ -82,7 +83,7 @@ export class ThrottledPromiseAll<T, O = T> {
     source: T | T[],
     producer: (source: T, throttledPromise: ThrottledPromiseAll<T, O | undefined>) => Promise<O | undefined>
   ): void {
-    ensureArray(source).forEach((s) => this.queue.push({ source: s, producer }));
+    ensureArray<T>(source).forEach((s) => this.queue.push({ source: s, producer }));
   }
 
   /**
@@ -158,10 +159,9 @@ export class ThrottledPromiseAll<T, O = T> {
             .catch((e) => Promise.reject(e))
         );
       }
-      this.#results.push(
-        // eslint-disable-next-line no-await-in-loop
-        await Promise.race([concurrencyPool.shift(), ...concurrencyPool])
-      );
+      // eslint-disable-next-line no-await-in-loop
+      const r = await Promise.race([concurrencyPool.shift(), ...concurrencyPool]);
+      this.#results.push(r);
     }
   }
 }
