@@ -90,4 +90,44 @@ describe('throttledPromiseAll', () => {
     const results = throttledPromiseAll.results as number[];
     expect(results).to.deep.equal([1, 2, 3, 4, 5].map((i) => i + 1));
   });
+
+  it('empty array', async () => {
+    const throttledPromiseAll: ThrottledPromiseAll<number, number> = new ThrottledPromiseAll({ concurrency: 5 });
+    await throttledPromiseAll.all();
+    expect(throttledPromiseAll.results).to.deep.equal([]);
+  });
+
+  it('add single arg that returns undefined', async () => {
+    const throttledPromiseAll: ThrottledPromiseAll<number, number> = new ThrottledPromiseAll({ concurrency: 5 });
+    throttledPromiseAll.add(0, () => Promise.resolve(undefined));
+    await throttledPromiseAll.all();
+    expect(throttledPromiseAll.results).to.deep.equal([undefined]);
+  });
+
+  it('add single arg that returns null', async () => {
+    const throttledPromiseAll: ThrottledPromiseAll<number, number> = new ThrottledPromiseAll({ concurrency: 5 });
+    throttledPromiseAll.add(0, () => Promise.resolve(-10));
+    await throttledPromiseAll.all();
+    expect(throttledPromiseAll.results).to.deep.equal([-10]);
+  });
+
+  it('add with producer of undefined', async () => {
+    const throttledPromiseAll: ThrottledPromiseAll<number, number> = new ThrottledPromiseAll({ concurrency: 5 });
+    throttledPromiseAll.add(0, () => Promise.resolve(undefined));
+    [1, 2, 3, 4, 5].forEach((i) => throttledPromiseAll.add(i, numberProducer));
+    throttledPromiseAll.add(6, () => Promise.resolve(undefined));
+    await throttledPromiseAll.all();
+    expect(throttledPromiseAll.results).to.deep.equal([undefined, 2, 3, 4, 5, 6, undefined]);
+  });
+
+  it('multiple adds to check order/sort', async () => {
+    const throttledPromiseAll: ThrottledPromiseAll<number, number> = new ThrottledPromiseAll({ concurrency: 2 });
+    throttledPromiseAll.add(0, () => Promise.resolve(undefined));
+    [1, 2].forEach((i) => throttledPromiseAll.add(i, numberProducer));
+    throttledPromiseAll.add(6, () => Promise.resolve(undefined));
+    [6, 7].forEach((i) => throttledPromiseAll.add(i, numberProducer));
+    throttledPromiseAll.add(6, () => Promise.resolve(undefined));
+    await throttledPromiseAll.all();
+    expect(throttledPromiseAll.results).to.deep.equal([undefined, 2, 3, undefined, 7, 8, undefined]);
+  });
 });
