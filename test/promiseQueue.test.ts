@@ -5,8 +5,8 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 import { expect } from 'chai';
-import { ThrottledPromiseAll } from '../src/throttledPromiseAll';
-import { Duration } from '../src/duration';
+import { ThrottledPromiseAll } from '../src';
+import { Duration } from '../src';
 
 describe('throttledPromiseAll', () => {
   const numberProducer = (
@@ -19,7 +19,10 @@ describe('throttledPromiseAll', () => {
     const throttledPromiseAll: ThrottledPromiseAll<number, number> = new ThrottledPromiseAll({ concurrency: 1 });
     for (const i of [1, 2, 3, 4, 5]) {
       // eslint-disable-next-line no-await-in-loop
-      throttledPromiseAll.add(i, numberProducer);
+      throttledPromiseAll.add(
+        i,
+        (source) => new Promise((resolve) => setTimeout(() => resolve(source + 1), (5 - i) * 100))
+      );
     }
     await throttledPromiseAll.all();
     const results = throttledPromiseAll.results as number[];
@@ -65,7 +68,7 @@ describe('throttledPromiseAll', () => {
       });
       throttledPromiseAll.add(
         [1, 2, 3, 4, 5],
-        (source) => new Promise((resolve) => setTimeout(() => resolve(source + 1), 10000))
+        (source) => new Promise((resolve) => setTimeout(() => resolve(source + 1), 200))
       );
       await throttledPromiseAll.all();
     } catch (e) {
