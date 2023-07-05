@@ -13,6 +13,14 @@ describe('collections', () => {
       const input = undefined;
       expect(ensureArray(input)).to.deep.equal([]);
     });
+    it('null => empty array', () => {
+      const input = null;
+      expect(ensureArray(input)).to.deep.equal([]);
+    });
+    it('zero => array with zero', () => {
+      const input = 0;
+      expect(ensureArray(input)).to.deep.equal([0]);
+    });
     it('an array => the array', () => {
       const input = ['a', 'b'];
       expect(ensureArray(input)).to.deep.equal(input);
