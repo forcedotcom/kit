@@ -18,6 +18,9 @@ describe('collections', () => {
     it('zero => array with zero', () => {
       expect(ensureArray(0)).to.deep.equal([0]);
     });
+    it('empty array => empty array', () => {
+      expect(ensureArray([])).to.deep.equal([]);
+    });
     it('an array => the array', () => {
       const input = ['a', 'b'];
       expect(ensureArray(input)).to.deep.equal(input);
