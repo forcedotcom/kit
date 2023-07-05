@@ -5,8 +5,8 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 import { expect } from 'chai';
-import { ThrottledPromiseAll } from '../src/throttledPromiseAll';
-import { Duration } from '../src/duration';
+import { ThrottledPromiseAll } from '../src';
+import { Duration } from '../src';
 
 describe('throttledPromiseAll', () => {
   const numberProducer = (
@@ -19,7 +19,10 @@ describe('throttledPromiseAll', () => {
     const throttledPromiseAll: ThrottledPromiseAll<number, number> = new ThrottledPromiseAll({ concurrency: 1 });
     for (const i of [1, 2, 3, 4, 5]) {
       // eslint-disable-next-line no-await-in-loop
-      throttledPromiseAll.add(i, numberProducer);
+      throttledPromiseAll.add(
+        i,
+        (source) => new Promise((resolve) => setTimeout(() => resolve(source + 1), (5 - i) * 100))
+      );
     }
     await throttledPromiseAll.all();
     const results = throttledPromiseAll.results as number[];
@@ -65,7 +68,7 @@ describe('throttledPromiseAll', () => {
       });
       throttledPromiseAll.add(
         [1, 2, 3, 4, 5],
-        (source) => new Promise((resolve) => setTimeout(() => resolve(source + 1), 10000))
+        (source) => new Promise((resolve) => setTimeout(() => resolve(source + 1), 200))
       );
       await throttledPromiseAll.all();
     } catch (e) {
@@ -86,5 +89,45 @@ describe('throttledPromiseAll', () => {
     await throttledPromiseAll.all();
     const results = throttledPromiseAll.results as number[];
     expect(results).to.deep.equal([1, 2, 3, 4, 5].map((i) => i + 1));
+  });
+
+  it('empty array', async () => {
+    const throttledPromiseAll: ThrottledPromiseAll<number, number> = new ThrottledPromiseAll({ concurrency: 5 });
+    await throttledPromiseAll.all();
+    expect(throttledPromiseAll.results).to.deep.equal([]);
+  });
+
+  it('add single arg that returns undefined', async () => {
+    const throttledPromiseAll: ThrottledPromiseAll<number, number> = new ThrottledPromiseAll({ concurrency: 5 });
+    throttledPromiseAll.add(0, () => Promise.resolve(undefined));
+    await throttledPromiseAll.all();
+    expect(throttledPromiseAll.results).to.deep.equal([undefined]);
+  });
+
+  it('add single arg that returns null', async () => {
+    const throttledPromiseAll: ThrottledPromiseAll<number, number> = new ThrottledPromiseAll({ concurrency: 5 });
+    throttledPromiseAll.add(0, () => Promise.resolve(-10));
+    await throttledPromiseAll.all();
+    expect(throttledPromiseAll.results).to.deep.equal([-10]);
+  });
+
+  it('add with producer of undefined', async () => {
+    const throttledPromiseAll: ThrottledPromiseAll<number, number> = new ThrottledPromiseAll({ concurrency: 5 });
+    throttledPromiseAll.add(0, () => Promise.resolve(undefined));
+    [1, 2, 3, 4, 5].forEach((i) => throttledPromiseAll.add(i, numberProducer));
+    throttledPromiseAll.add(6, () => Promise.resolve(undefined));
+    await throttledPromiseAll.all();
+    expect(throttledPromiseAll.results).to.deep.equal([undefined, 2, 3, 4, 5, 6, undefined]);
+  });
+
+  it('multiple adds to check order/sort', async () => {
+    const throttledPromiseAll: ThrottledPromiseAll<number, number> = new ThrottledPromiseAll({ concurrency: 2 });
+    throttledPromiseAll.add(0, () => Promise.resolve(undefined));
+    [1, 2].forEach((i) => throttledPromiseAll.add(i, numberProducer));
+    throttledPromiseAll.add(6, () => Promise.resolve(undefined));
+    [6, 7].forEach((i) => throttledPromiseAll.add(i, numberProducer));
+    throttledPromiseAll.add(6, () => Promise.resolve(undefined));
+    await throttledPromiseAll.all();
+    expect(throttledPromiseAll.results).to.deep.equal([undefined, 2, 3, undefined, 7, 8, undefined]);
   });
 });

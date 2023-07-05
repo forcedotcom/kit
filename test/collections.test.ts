@@ -10,8 +10,16 @@ import { ensureArray } from '../src/collections';
 describe('collections', () => {
   describe('ensureArray', () => {
     it('undefined => empty array', () => {
-      const input = undefined;
-      expect(ensureArray(input)).to.deep.equal([]);
+      expect(ensureArray(undefined)).to.deep.equal([]);
+    });
+    it('null => empty array', () => {
+      expect(ensureArray(null)).to.deep.equal([]);
+    });
+    it('zero => array with zero', () => {
+      expect(ensureArray(0)).to.deep.equal([0]);
+    });
+    it('empty array => empty array', () => {
+      expect(ensureArray([])).to.deep.equal([]);
     });
     it('an array => the array', () => {
       const input = ['a', 'b'];

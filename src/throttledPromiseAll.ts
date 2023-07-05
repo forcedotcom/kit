@@ -18,6 +18,15 @@ export type PromiseItem<T, O = T | undefined> = {
   producer: (source: T, throttledPromise: ThrottledPromiseAll<T, O | undefined>) => Promise<O | undefined>;
 };
 
+type IndexedProducer<T, O = T> = PromiseItem<T, O> & {
+  index: number;
+};
+
+type IndexedResult<O> = {
+  index: number;
+  result: O | undefined;
+};
+
 /**
  * A promise that throttles the number of promises running at a time.
  *
@@ -39,7 +48,7 @@ export class ThrottledPromiseAll<T, O = T> {
   private readonly concurrency: number;
   private wait: Duration;
   private timeout: NodeJS.Timeout | undefined;
-  readonly #results: Array<O | undefined> = [];
+  readonly #results: Array<IndexedResult<O> | undefined> = [];
 
   /**
    * Construct a new ThrottledPromiseAll.
@@ -56,7 +65,7 @@ export class ThrottledPromiseAll<T, O = T> {
    * Returns the results of the promises that have been resolved.
    */
   public get results(): Array<O | undefined> {
-    return this.#results;
+    return this.#results.sort((a, b) => (a?.index ?? 0) - (b?.index ?? 0)).map((r) => r?.result);
   }
 
   /**
@@ -73,7 +82,7 @@ export class ThrottledPromiseAll<T, O = T> {
     source: T | T[],
     producer: (source: T, throttledPromise: ThrottledPromiseAll<T, O | undefined>) => Promise<O | undefined>
   ): void {
-    ensureArray(source).forEach((s) => this.queue.push({ source: s, producer }));
+    ensureArray<T>(source).forEach((s) => this.queue.push({ source: s, producer }));
   }
 
   /**
@@ -109,7 +118,7 @@ export class ThrottledPromiseAll<T, O = T> {
         await this.dequeue();
       }
       this.stop();
-      return this.#results;
+      return this.results;
     } catch (e) {
       this.stop();
       throw e;
@@ -124,14 +133,43 @@ export class ThrottledPromiseAll<T, O = T> {
   }
 
   private async dequeue(): Promise<void> {
-    while (this.queue.length > 0) {
-      const next = this.queue.slice(0, this.concurrency);
-      this.queue.splice(0, this.concurrency);
+    const generator = function* (
+      data: Array<PromiseItem<T, O | undefined>>
+    ): Generator<PromiseItem<T, O | undefined> | undefined> {
+      while (data.length > 0) {
+        yield data.shift();
+      }
+    };
+    const concurrencyPool: Map<number, Promise<IndexedResult<O> | undefined>> = new Map<
+      number,
+      Promise<IndexedResult<O> | undefined>
+    >();
+    const get = generator(this.queue);
+    let index = 0;
+    while (this.queue.length > 0 || concurrencyPool.size > 0) {
+      while (concurrencyPool.size < this.concurrency) {
+        const item = get.next().value as PromiseItem<T, O | undefined>;
+        if (!item) {
+          break;
+        }
+
+        const p: IndexedProducer<T, O> = { ...item, index: index++ };
+        concurrencyPool.set(
+          p.index,
+          p
+            .producer(item.source, this)
+            .then((result) => ({ index: p.index, result }))
+            .catch((e) => Promise.reject(e))
+        );
+      }
       // eslint-disable-next-line no-await-in-loop
-      const results = await Promise.all(
-        next.map((item) => item.producer(item.source, this).catch((e) => Promise.reject(e)))
-      );
-      this.#results.push(...results);
+      const r = await Promise.race(concurrencyPool.values());
+      const rIndex = r?.index ?? -1;
+      if (!concurrencyPool.has(rIndex)) {
+        throw new Error(`PromiseQueue: Could not find index ${r?.index} in pool`);
+      }
+      concurrencyPool.delete(rIndex);
+      this.#results.push(r);
     }
   }
 }
