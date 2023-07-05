@@ -142,6 +142,7 @@ export class ThrottledPromiseAll<T, O = T> {
       }
     };
     const concurrencyPool: Array<Promise<IndexedResult<O> | undefined>> = [];
+    const concurrencyPoolIndexes: number[] = [];
     const get = generator(this.queue);
     let index = 0;
     while (this.queue.length > 0 || concurrencyPool.length > 0) {
@@ -158,9 +159,16 @@ export class ThrottledPromiseAll<T, O = T> {
             .then((result) => ({ index: p.index, result }))
             .catch((e) => Promise.reject(e))
         );
+        concurrencyPoolIndexes.push(p.index);
       }
       // eslint-disable-next-line no-await-in-loop
-      const r = await Promise.race([concurrencyPool.shift(), ...concurrencyPool]);
+      const r = await Promise.race(concurrencyPool);
+      const poolIndex = concurrencyPoolIndexes.indexOf(r?.index ?? -1);
+      if (poolIndex < 0) {
+        throw new Error(`PromiseQueue: Could not find index ${r?.index} in pool`);
+      }
+      concurrencyPoolIndexes.splice(poolIndex, 1);
+      concurrencyPool.splice(poolIndex, 1);
       this.#results.push(r);
     }
   }
