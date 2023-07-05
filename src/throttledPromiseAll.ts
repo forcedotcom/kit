@@ -141,34 +141,35 @@ export class ThrottledPromiseAll<T, O = T> {
         yield data.shift();
       }
     };
-    const concurrencyPool: Array<Promise<IndexedResult<O> | undefined>> = [];
-    const concurrencyPoolIndexes: number[] = [];
+    const concurrencyPool: Map<number, Promise<IndexedResult<O> | undefined>> = new Map<
+      number,
+      Promise<IndexedResult<O> | undefined>
+    >();
     const get = generator(this.queue);
     let index = 0;
-    while (this.queue.length > 0 || concurrencyPool.length > 0) {
-      while (concurrencyPool.length < this.concurrency) {
+    while (this.queue.length > 0 || concurrencyPool.size > 0) {
+      while (concurrencyPool.size < this.concurrency) {
         const item = get.next().value as PromiseItem<T, O | undefined>;
         if (!item) {
           break;
         }
 
         const p: IndexedProducer<T, O> = { ...item, index: index++ };
-        concurrencyPool.push(
+        concurrencyPool.set(
+          p.index,
           p
             .producer(item.source, this)
             .then((result) => ({ index: p.index, result }))
             .catch((e) => Promise.reject(e))
         );
-        concurrencyPoolIndexes.push(p.index);
       }
       // eslint-disable-next-line no-await-in-loop
-      const r = await Promise.race(concurrencyPool);
-      const poolIndex = concurrencyPoolIndexes.indexOf(r?.index ?? -1);
-      if (poolIndex < 0) {
+      const r = await Promise.race(concurrencyPool.values());
+      const rIndex = r?.index ?? -1;
+      if (!concurrencyPool.has(rIndex)) {
         throw new Error(`PromiseQueue: Could not find index ${r?.index} in pool`);
       }
-      concurrencyPoolIndexes.splice(poolIndex, 1);
-      concurrencyPool.splice(poolIndex, 1);
+      concurrencyPool.delete(rIndex);
       this.#results.push(r);
     }
   }
