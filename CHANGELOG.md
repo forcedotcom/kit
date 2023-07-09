@@ -1,3 +1,12 @@
+## [3.0.5](https://github.com/forcedotcom/kit/compare/3.0.4...3.0.5) (2023-07-09)
+
+
+### Bug Fixes
+
+* **deps:** bump @salesforce/ts-types from 2.0.3 to 2.0.4 ([e3e53b7](https://github.com/forcedotcom/kit/commit/e3e53b71e081f6bb06be53a13545ac81cb64fc4e))
+
+
+
 ## [3.0.4](https://github.com/forcedotcom/kit/compare/3.0.3...3.0.4) (2023-07-05)
 
 
