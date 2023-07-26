@@ -133,22 +133,14 @@ export class ThrottledPromiseAll<T, O = T> {
   }
 
   private async dequeue(): Promise<void> {
-    const generator = function* (
-      data: Array<PromiseItem<T, O | undefined>>
-    ): Generator<PromiseItem<T, O | undefined> | undefined> {
-      while (data.length > 0) {
-        yield data.shift();
-      }
-    };
     const concurrencyPool: Map<number, Promise<IndexedResult<O> | undefined>> = new Map<
       number,
       Promise<IndexedResult<O> | undefined>
     >();
-    const get = generator(this.queue);
     let index = 0;
     while (this.queue.length > 0 || concurrencyPool.size > 0) {
       while (concurrencyPool.size < this.concurrency) {
-        const item = get.next().value as PromiseItem<T, O | undefined>;
+        const item = this.queue.shift();
         if (!item) {
           break;
         }
