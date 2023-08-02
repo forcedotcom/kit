@@ -136,4 +136,17 @@ describe('throttledPromiseAll', () => {
     await throttledPromiseAll.all();
     expect(throttledPromiseAll.results).to.deep.equal([undefined, 2, 3, undefined, 7, 8, undefined]);
   });
+
+  it('should cancel', async () => {
+    const throttledPromiseAll: ThrottledPromiseAll<number, number> = new ThrottledPromiseAll({
+      concurrency: 5,
+      cancel: () => true,
+    });
+    throttledPromiseAll.add(0, () => Promise.resolve(undefined));
+    try {
+      await throttledPromiseAll.all();
+    } catch (e) {
+      expect((e as Error).message).to.equal('PromiseQueue: Cancelled');
+    }
+  });
 });
