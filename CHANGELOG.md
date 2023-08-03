@@ -1,3 +1,12 @@
+## [3.0.8](https://github.com/forcedotcom/kit/compare/3.0.7...3.0.8) (2023-08-03)
+
+
+### Bug Fixes
+
+* throttle promise all infinite loop ([06a1d05](https://github.com/forcedotcom/kit/commit/06a1d05d1381adf6ed9ba68f517ae918dd11a71e))
+
+
+
 ## [3.0.7](https://github.com/forcedotcom/kit/compare/3.0.6...3.0.7) (2023-07-30)
 
 
