@@ -11,6 +11,7 @@ export type PromiseOptions = {
   concurrency: number;
   stopOnError?: boolean;
   timeout?: Duration;
+  cancel?: () => boolean;
 };
 
 export type PromiseItem<T, O = T | undefined> = {
@@ -26,6 +27,8 @@ type IndexedResult<O> = {
   index: number;
   result: O | undefined;
 };
+
+const noCancel = (): boolean => false;
 
 /**
  * A promise that throttles the number of promises running at a time.
@@ -48,6 +51,7 @@ export class ThrottledPromiseAll<T, O = T> {
   private readonly concurrency: number;
   private wait: Duration;
   private timeout: NodeJS.Timeout | undefined;
+  private readonly cancel: () => boolean;
   readonly #results: Array<IndexedResult<O> | undefined> = [];
 
   /**
@@ -59,6 +63,7 @@ export class ThrottledPromiseAll<T, O = T> {
     this.queue = [];
     this.concurrency = options.concurrency;
     this.wait = options.timeout ?? Duration.milliseconds(0);
+    this.cancel = options.cancel ?? noCancel;
   }
 
   /**
@@ -133,22 +138,18 @@ export class ThrottledPromiseAll<T, O = T> {
   }
 
   private async dequeue(): Promise<void> {
-    const generator = function* (
-      data: Array<PromiseItem<T, O | undefined>>
-    ): Generator<PromiseItem<T, O | undefined> | undefined> {
-      while (data.length > 0) {
-        yield data.shift();
-      }
-    };
     const concurrencyPool: Map<number, Promise<IndexedResult<O> | undefined>> = new Map<
       number,
       Promise<IndexedResult<O> | undefined>
     >();
-    const get = generator(this.queue);
     let index = 0;
     while (this.queue.length > 0 || concurrencyPool.size > 0) {
+      if (this.cancel()) {
+        this.stop();
+        throw new Error('PromiseQueue: Cancelled');
+      }
       while (concurrencyPool.size < this.concurrency) {
-        const item = get.next().value as PromiseItem<T, O | undefined>;
+        const item = this.queue.shift();
         if (!item) {
           break;
         }

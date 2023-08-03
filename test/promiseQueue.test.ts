@@ -5,8 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 import { expect } from 'chai';
-import { ThrottledPromiseAll } from '../src';
-import { Duration } from '../src';
+import { Duration, ThrottledPromiseAll } from '../src';
 
 describe('throttledPromiseAll', () => {
   const numberProducer = (
@@ -80,10 +79,17 @@ describe('throttledPromiseAll', () => {
     throttledPromiseAll.add(
       1,
       (source: number, throttledPromise: ThrottledPromiseAll<number, number | undefined>): Promise<number> => {
+        // add more to the queue after a couple of seconds
         if (source === 1) {
-          throttledPromise.add([2, 3, 4, 5], numberProducer);
+          return new Promise((resolve) => {
+            setTimeout(() => {
+              throttledPromise.add([2, 3, 4, 5], numberProducer);
+              resolve(source + 1);
+            }, 2000);
+          });
+        } else {
+          return Promise.resolve(source + 1);
         }
-        return Promise.resolve(source + 1);
       }
     );
     await throttledPromiseAll.all();
@@ -129,5 +135,18 @@ describe('throttledPromiseAll', () => {
     throttledPromiseAll.add(6, () => Promise.resolve(undefined));
     await throttledPromiseAll.all();
     expect(throttledPromiseAll.results).to.deep.equal([undefined, 2, 3, undefined, 7, 8, undefined]);
+  });
+
+  it('should cancel', async () => {
+    const throttledPromiseAll: ThrottledPromiseAll<number, number> = new ThrottledPromiseAll({
+      concurrency: 5,
+      cancel: () => true,
+    });
+    throttledPromiseAll.add(0, () => Promise.resolve(undefined));
+    try {
+      await throttledPromiseAll.all();
+    } catch (e) {
+      expect((e as Error).message).to.equal('PromiseQueue: Cancelled');
+    }
   });
 });
