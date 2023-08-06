@@ -1,6 +1,6 @@
 {
   "name": "@salesforce/kit",
-  "version": "3.0.8",
+  "version": "3.0.9",
   "description": "Commonly needed utilities for TypeScript and JavaScript",
   "main": "lib/index.js",
   "repository": "forcedotcom/kit",
