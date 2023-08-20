@@ -1,3 +1,12 @@
+## [3.0.10](https://github.com/forcedotcom/kit/compare/3.0.9...3.0.10) (2023-08-20)
+
+
+### Bug Fixes
+
+* **deps:** bump tslib from 2.6.1 to 2.6.2 ([a598215](https://github.com/forcedotcom/kit/commit/a598215c578d2f96017c930d0795b63c75e57ac0))
+
+
+
 ## [3.0.9](https://github.com/forcedotcom/kit/compare/3.0.8...3.0.9) (2023-08-06)
 
 
