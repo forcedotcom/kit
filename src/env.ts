@@ -7,8 +7,7 @@
 
 import { definiteEntriesOf, Dictionary, isKeyOf, KeyValue, Nullable, Optional, isNumber } from '@salesforce/ts-types';
 import { InvalidDefaultEnvValueError } from './errors';
-import { toNumber, toBoolean } from './nodash';
-
+import { toBoolean, toNumber } from './nodash';
 /**
  * An injectable abstraction on top of `process.env` with various convenience functions
  * for accessing environment variables of different anticipated shapes.
@@ -21,13 +20,13 @@ export class Env {
   /**
    * Gets a `string` value for a given key.
    *
-   * @param key The name of the envar.
+   * @param key The name of the envVar.
    */
   public getString(key: string): Optional<string>;
   /**
    * Gets a `string` value for a given key.
    *
-   * @param key The name of the envar.
+   * @param key The name of the envVar.
    * @param def A default value.
    */
   public getString(key: string, def: string): string;
@@ -39,7 +38,7 @@ export class Env {
   /**
    * Gets a `string` value from a finite set of expected values, matched case-insensitively.
    *
-   * @param key The name of the envar.
+   * @param key The name of the envVar.
    * @param values The finite set of expected values.
    */
   public getStringIn(key: string, values: string[]): Optional<string>;
@@ -47,7 +46,7 @@ export class Env {
    * Gets a `string` value from a finite set of expected values, matched case-insensitively, using a default if
    * not found.
    *
-   * @param key The name of the envar.
+   * @param key The name of the envVar.
    * @param values The finite set of expected values.
    * @param def A default value.
    * @throws {@link InvalidDefaultEnvValueError} If the provided default value is not a member of the expected set.
@@ -70,18 +69,18 @@ export class Env {
    * matched case-insensitively. An optional `transform` may be provided that will preprocess both the found value
    * and any provided default before testing for membership in the target object's key set.
    *
-   * @param key The name of the envar.
+   * @param key The name of the envVar.
    * @param obj The object providing the keys to test with.
    * @param transform A transform function applied to both the default and value before testing that
    * either is a key of `T`.
    *
    * ```
    * enum Mode { TEST = 'test', DEMO = 'demo' }
-   * env.setString('MY_ENVAR', Mode.DEMO);
-   * const check = env.getString('MY_ENVAR');
+   * env.setString('MY_envVar', Mode.DEMO);
+   * const check = env.getString('MY_envVar');
    * // check -> 'demo'
    * // typeof check -> string
-   * const value = env.getKeyOf('MY_ENVAR', Mode, v => v.toUpperCase());
+   * const value = env.getKeyOf('MY_envVar', Mode, v => v.toUpperCase());
    * // value -> 'DEMO'
    * // typeof value -> 'TEST' | 'DEMO' (i.e. Extract<keyof typeof Mode, string>)
    * const enumValue = Mode[value];
@@ -100,7 +99,7 @@ export class Env {
    * preprocess both the found value and any provided default before testing for membership in the target object's
    * key set.
    *
-   * @param key The name of the envar.
+   * @param key The name of the envVar.
    * @param obj The object providing the keys to test with.
    * @param def A default value.
    * @param transform A transform function applied to both the default and value before testing that
@@ -109,11 +108,11 @@ export class Env {
    *
    * ```
    * enum Mode { TEST = 'test', DEMO = 'demo' }
-   * env.setString('MY_ENVAR', Mode.DEMO);
-   * const check = env.getString('MY_ENVAR');
+   * env.setString('MY_envVar', Mode.DEMO);
+   * const check = env.getString('MY_envVar');
    * // check -> 'demo'
    * // typeof check -> string
-   * const value = env.getKeyOf('MY_ENVAR', Mode, Mode.TEST, v => v.toUpperCase());
+   * const value = env.getKeyOf('MY_envVar', Mode, Mode.TEST, v => v.toUpperCase());
    * // value -> 'DEMO'
    * // typeof value -> 'TEST' | 'DEMO' (Extract<keyof typeof Mode, string>)
    * const enumValue = Mode[value];
@@ -155,7 +154,7 @@ export class Env {
   /**
    * Sets a `string` value for a given key, or removes the current value when no value is given.
    *
-   * @param key The name of the envar.
+   * @param key The name of the envVar.
    * @param value The value to set.
    */
   public setString(key: string, value: Nullable<string>): void {
@@ -169,13 +168,13 @@ export class Env {
   /**
    * Gets a list of `string` values for a given key by splitting the raw value on `,` chars.
    *
-   * @param key The name of the envar.
+   * @param key The name of the envVar.
    */
   public getList(key: string): Optional<string[]>;
   /**
    * Gets a list of `string` values for a given key by splitting the raw value on `,` chars.
    *
-   * @param key The name of the envar.
+   * @param key The name of the envVar.
    * @param def A default list of values.
    */
   public getList(key: string, def: string[]): string[];
@@ -189,7 +188,7 @@ export class Env {
    * Sets a `string` value from a list for a given key by joining values with a `,` into a raw `string` value,
    * or removes the current value when no value is given.
    *
-   * @param key The name of the envar.
+   * @param key The name of the envVar.
    * @param values The values to set.
    */
   public setList(key: string, values: Nullable<string[]>): void {
@@ -203,7 +202,7 @@ export class Env {
   /**
    * Gets a `boolean` value for a given key. Returns the default value if no value was found.
    *
-   * @param key The name of the envar.
+   * @param key The name of the envVar.
    * @param def A default boolean, which itself defaults to `false` if not otherwise supplied.
    */
   public getBoolean(key: string, def = false): boolean {
@@ -214,7 +213,7 @@ export class Env {
   /**
    * Sets a `boolean` value for a given key, or removes the current value when no value is given.
    *
-   * @param key The name of the envar.
+   * @param key The name of the envVar.
    * @param value The value to set.
    */
   public setBoolean(key: string, value: Nullable<boolean>): void {
@@ -228,7 +227,7 @@ export class Env {
   /**
    * Gets a `number` value for a given key. Returns the default value if no value was found.
    *
-   * @param key The name of the envar.
+   * @param key The name of the envVar.
    * @param def A default number, which itself defaults to `undefined` if not otherwise supplied.
    */
   public getNumber(key: string, def: number): number;
@@ -245,7 +244,7 @@ export class Env {
   /**
    * Sets a `number` value for a given key, or removes the current value when no value is given.
    *
-   * @param key The name of the envar.
+   * @param key The name of the envVar.
    * @param value The value to set.
    */
   public setNumber(key: string, value: Nullable<number>): void {
@@ -259,14 +258,14 @@ export class Env {
   /**
    * Unsets a value for a given key.
    *
-   * @param key The name of the envar.
+   * @param key The name of the envVar.
    */
   public unset(key: string): void {
     delete this.store[key];
   }
 
   /**
-   * Gets an array of all definitely assigned key-value pairs from the underlying envar store.
+   * Gets an array of all definitely assigned key-value pairs from the underlying envVar store.
    */
   public entries(): Array<KeyValue<string>> {
     return definiteEntriesOf(this.store);

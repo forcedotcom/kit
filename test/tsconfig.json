@@ -3,5 +3,8 @@
 
 {
   "extends": "@salesforce/dev-config/tsconfig-test-strict",
-  "include": ["./**/*.ts"]
+  "include": ["./**/*.ts"],
+  "compilerOptions": {
+    "module": "ES2022"
+  }
 }

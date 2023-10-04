@@ -1,0 +1,19 @@
+{
+  "wireit": {
+    "compile-esm": {
+      "command": "tsc --module es2022 --outDir esm --incremental; echo '{\"type\": \"module\"}' > esm/package.json",
+      "files": ["src/**/*.ts", "**/tsconfig.json", "messages/**"],
+      "output": ["esm/**", "*.tsbuildinfo"],
+      "clean": "if-file-deleted"
+    },
+    "compile-cjs": {
+      "command": "tsc --module commonjs --outDir esm --incremental; echo '{\"type\": \"commonjs\"}' > cjs/package.json",
+      "files": ["src/**/*.ts", "**/tsconfig.json", "messages/**"],
+      "output": ["cjs/**", "*.tsbuildinfo"],
+      "clean": "if-file-deleted"
+    },
+    "compile": {
+      "dependencies": ["compile-esm", "compile-cjs"]
+    }
+  }
+}

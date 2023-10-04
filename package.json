@@ -2,15 +2,23 @@
   "name": "@salesforce/kit",
   "version": "3.0.13",
   "description": "Commonly needed utilities for TypeScript and JavaScript",
-  "main": "lib/index.js",
+  "main": "cjs/index.js",
   "repository": "forcedotcom/kit",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "types": "lib/index.d.ts",
+  "type": "module",
+  "exports": {
+    "require": "./cjs/index.js",
+    "import": "./esm/index.js"
+  },
   "files": [
-    "lib/**/*.js",
-    "lib/**/*.d.ts",
-    "vendor/lodash.js"
+    "cjs/**/*.js",
+    "cjs/**/*.d.ts",
+    "cjs/package.json",
+    "esm/**/*.js",
+    "esm/**/*.d.ts",
+    "esm/package.json"
   ],
   "scripts": {
     "build": "wireit",
@@ -22,7 +30,6 @@
     "format": "wireit",
     "lint": "wireit",
     "lint-fix": "yarn sf-lint --fix",
-    "lodash": "./scripts/build-lodash.sh",
     "prepack": "sf-prepack",
     "prepare": "sf-install",
     "test": "wireit",
@@ -30,12 +37,14 @@
   },
   "dependencies": {
     "@salesforce/ts-types": "^2.0.8",
+    "lodash-es": "^4.17.21",
     "tslib": "^2.6.2"
   },
   "devDependencies": {
     "@salesforce/dev-config": "^4.0.1",
     "@salesforce/dev-scripts": "^5.10.0",
     "@salesforce/prettier-config": "^0.0.3",
+    "@types/lodash-es": "^4.17.9",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "chai": "^4.3.10",
@@ -49,14 +58,13 @@
     "eslint-plugin-jsdoc": "^43.2.0",
     "eslint-plugin-prefer-arrow": "^1.2.1",
     "husky": "^7.0.4",
-    "lodash-cli": "^4.17.5",
     "mocha": "^10.2.0",
     "nyc": "^15.1.0",
     "prettier": "^2.8.8",
     "pretty-quick": "^3.1.0",
-    "sinon": "10.0.0",
-    "ts-node": "^10.0.0",
-    "typescript": "^4.9.5",
+    "sinon": "^16.0.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2",
     "wireit": "^0.14.0"
   },
   "wireit": {
@@ -66,18 +74,37 @@
         "lint"
       ]
     },
-    "compile": {
-      "command": "tsc -p . --pretty --incremental",
+    "compile-esm": {
+      "command": "tsc --module es2022 --outDir esm --incremental; echo '{\"type\": \"module\"}' > esm/package.json",
       "files": [
         "src/**/*.ts",
         "**/tsconfig.json",
         "messages/**"
       ],
       "output": [
-        "lib/**",
+        "esm/**",
         "*.tsbuildinfo"
       ],
       "clean": "if-file-deleted"
+    },
+    "compile-cjs": {
+      "command": "tsc --module commonjs --outDir esm --incremental; echo '{\"type\": \"commonjs\"}' > cjs/package.json",
+      "files": [
+        "src/**/*.ts",
+        "**/tsconfig.json",
+        "messages/**"
+      ],
+      "output": [
+        "cjs/**",
+        "*.tsbuildinfo"
+      ],
+      "clean": "if-file-deleted"
+    },
+    "compile": {
+      "dependencies": [
+        "compile-esm",
+        "compile-cjs"
+      ]
     },
     "format": {
       "command": "prettier --write \"+(src|test|schemas)/**/*.+(ts|js|json)|command-snapshot.json\"",
