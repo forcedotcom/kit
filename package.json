@@ -118,7 +118,7 @@
       "output": []
     },
     "lint": {
-      "command": "eslint src test --color --cache --cache-location .eslintcache",
+      "command": "eslint src test --color",
       "files": [
         "src/**/*.ts",
         "test/**/*.ts",

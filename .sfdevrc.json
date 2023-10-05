@@ -14,6 +14,11 @@
     },
     "compile": {
       "dependencies": ["compile-esm", "compile-cjs"]
+    },
+    "lint": {
+      "command": "eslint src test --color",
+      "files": ["src/**/*.ts", "test/**/*.ts", "messages/**", "**/.eslint*", "**/tsconfig.json"],
+      "output": []
     }
   }
 }
