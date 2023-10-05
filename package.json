@@ -37,14 +37,14 @@
   },
   "dependencies": {
     "@salesforce/ts-types": "^2.0.8",
-    "lodash": "^4.17.21",
+    "@types/lodash-es": "^4.17.9",
+    "lodash-es": "^4.17.21",
     "tslib": "^2.6.2"
   },
   "devDependencies": {
     "@salesforce/dev-config": "^4.0.1",
     "@salesforce/dev-scripts": "^5.10.0",
     "@salesforce/prettier-config": "^0.0.3",
-    "@types/lodash": "^4.14.199",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "chai": "^4.3.10",
