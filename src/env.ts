@@ -6,7 +6,7 @@
  */
 
 import { definiteEntriesOf, Dictionary, isKeyOf, KeyValue, Nullable, Optional, isNumber } from '@salesforce/ts-types';
-import { default as toNumber } from 'lodash/tonumber';
+import { default as toNumber } from 'lodash/toNumber';
 import { InvalidDefaultEnvValueError } from './errors';
 import { toBoolean } from './nodash/internal';
 /**
