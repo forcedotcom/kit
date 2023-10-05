@@ -4,17 +4,18 @@
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
+import defaults from 'lodash/defaults';
+import toNumber from 'lodash/tonumber';
+import findKey from 'lodash/findkey';
+import includes from 'lodash/includes';
+import keyBy from 'lodash/keyby';
+import mapKeys from 'lodash/mapkeys';
+import minBy from 'lodash/minby';
+import maxBy from 'lodash/maxby';
+import merge from 'lodash/merge';
+import omit from 'lodash/omit';
+import once from 'lodash/once';
+import set from 'lodash/set';
+import sortBy from 'lodash/sortby';
 
-export { default as defaults } from 'lodash-es/defaults';
-export { default as toNumber } from 'lodash-es/toNumber';
-export { default as findKey } from 'lodash-es/findKey';
-export { default as includes } from 'lodash-es/includes';
-export { default as keyBy } from 'lodash-es/keyBy';
-export { default as mapKeys } from 'lodash-es/mapKeys';
-export { default as minBy } from 'lodash-es/minBy';
-export { default as maxBy } from 'lodash-es/maxBy';
-export { default as merge } from 'lodash-es/merge';
-export { default as omit } from 'lodash-es/omit';
-export { default as once } from 'lodash-es/once';
-export { default as set } from 'lodash-es/set';
-export { default as sortBy } from 'lodash-es/sortBy';
+export { defaults, toNumber, findKey, includes, keyBy, mapKeys, minBy, maxBy, merge, omit, once, set, sortBy };

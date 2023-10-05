@@ -2,20 +2,28 @@
   "name": "@salesforce/kit",
   "version": "3.0.13",
   "description": "Commonly needed utilities for TypeScript and JavaScript",
-  "main": "cjs/index.js",
+  "main": "lib/index.js",
   "repository": "forcedotcom/kit",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "types": "lib/index.d.ts",
   "type": "module",
   "exports": {
-    "require": "./cjs/index.js",
-    "import": "./esm/index.js"
+    ".": {
+      "import": {
+        "types": "./esm/index.d.ts",
+        "default": "./esm/index.js"
+      },
+      "require": {
+        "types": "./lib/index.d.ts",
+        "default": "./lib/index.js"
+      }
+    }
   },
   "files": [
-    "cjs/**/*.js",
-    "cjs/**/*.d.ts",
-    "cjs/package.json",
+    "lib/**/*.js",
+    "lib/**/*.d.ts",
+    "lib/package.json",
     "esm/**/*.js",
     "esm/**/*.d.ts",
     "esm/package.json"
@@ -37,14 +45,14 @@
   },
   "dependencies": {
     "@salesforce/ts-types": "^2.0.8",
-    "lodash-es": "^4.17.21",
+    "lodash": "^4.17.21",
     "tslib": "^2.6.2"
   },
   "devDependencies": {
     "@salesforce/dev-config": "^4.0.1",
     "@salesforce/dev-scripts": "^5.10.0",
     "@salesforce/prettier-config": "^0.0.3",
-    "@types/lodash-es": "^4.17.9",
+    "@types/lodash": "^4.14.199",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "chai": "^4.3.10",
@@ -88,14 +96,14 @@
       "clean": "if-file-deleted"
     },
     "compile-cjs": {
-      "command": "tsc --module commonjs --outDir cjs --incremental; echo '{\"type\": \"commonjs\"}' > cjs/package.json",
+      "command": "tsc --module commonjs --outDir lib --incremental; echo '{\"type\": \"commonjs\"}' > lib/package.json",
       "files": [
         "src/**/*.ts",
         "**/tsconfig.json",
         "messages/**"
       ],
       "output": [
-        "cjs/**",
+        "lib/**",
         "*.tsbuildinfo"
       ],
       "clean": "if-file-deleted"

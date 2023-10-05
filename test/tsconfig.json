@@ -5,6 +5,7 @@
   "extends": "@salesforce/dev-config/tsconfig-test-strict",
   "include": ["./**/*.ts"],
   "compilerOptions": {
-    "module": "ES2022"
+    "module": "ES2022",
+    "esModuleInterop": true
   }
 }
