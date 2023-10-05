@@ -75,7 +75,7 @@
       ]
     },
     "compile-esm": {
-      "command": "tsc --module es2022 --outDir esm --incremental",
+      "command": "tsc --module es2022 --outDir esm --incremental; cp scripts/esmPjson.json lib/package.json",
       "files": [
         "src/**/*.ts",
         "**/tsconfig.json",
@@ -88,7 +88,7 @@
       "clean": "if-file-deleted"
     },
     "compile-cjs": {
-      "command": "tsc --module commonjs --outDir lib --incremental",
+      "command": "tsc --module commonjs --outDir lib --incremental; cp scripts/cjsPjson.json lib/package.json",
       "files": [
         "src/**/*.ts",
         "**/tsconfig.json",
