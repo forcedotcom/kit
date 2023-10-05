@@ -14,7 +14,6 @@ lerna-debug.log
 # compile source
 lib
 esm
-cjs
 
 # test artifacts
 *xunit.xml
