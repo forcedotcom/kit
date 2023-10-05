@@ -6,8 +6,8 @@
  */
 
 import { definiteEntriesOf, Dictionary, isKeyOf, KeyValue, Nullable, Optional, isNumber } from '@salesforce/ts-types';
+import toNumber from 'lodash/tonumber';
 import { InvalidDefaultEnvValueError } from './errors';
-import { toNumber } from './nodash/external';
 import { toBoolean } from './nodash/internal';
 /**
  * An injectable abstraction on top of `process.env` with various convenience functions
