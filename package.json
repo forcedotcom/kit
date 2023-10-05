@@ -75,7 +75,7 @@
       ]
     },
     "compile-esm": {
-      "command": "tsc --module es2022 --outDir esm --incremental; echo '{\"type\": \"module\"}' > esm/package.json",
+      "command": "tsc --module es2022 --outDir esm --incremental",
       "files": [
         "src/**/*.ts",
         "**/tsconfig.json",
@@ -88,7 +88,7 @@
       "clean": "if-file-deleted"
     },
     "compile-cjs": {
-      "command": "tsc --module commonjs --outDir lib --incremental; echo '{\"type\": \"commonjs\"}' > lib/package.json",
+      "command": "tsc --module commonjs --outDir lib --incremental",
       "files": [
         "src/**/*.ts",
         "**/tsconfig.json",
