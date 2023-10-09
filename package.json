@@ -10,12 +10,12 @@
   "type": "module",
   "exports": {
     "import": "./esm/index.js",
-    "require": "./lib/index.js"
+    "require": "./cjs/index.js"
   },
   "files": [
-    "lib/**/*.js",
-    "lib/**/*.d.ts",
-    "lib/package.json",
+    "cjs/**/*.js",
+    "cjs/**/*.d.ts",
+    "cjs/package.json",
     "esm/**/*.js",
     "esm/**/*.d.ts",
     "esm/package.json"
@@ -37,14 +37,14 @@
   },
   "dependencies": {
     "@salesforce/ts-types": "^2.0.8",
-    "lodash": "^4.17.21",
+    "lodash.tonumber": "^4.0.3",
     "tslib": "^2.6.2"
   },
   "devDependencies": {
     "@salesforce/dev-config": "^4.0.1",
     "@salesforce/dev-scripts": "^5.10.0",
     "@salesforce/prettier-config": "^0.0.3",
-    "@types/lodash": "^4.14.199",
+    "@types/lodash.tonumber": "^4.0.7",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "chai": "^4.3.10",
@@ -87,14 +87,14 @@
       "clean": "if-file-deleted"
     },
     "compile-cjs": {
-      "command": "tsc --module commonjs --outDir lib --incremental && cp scripts/cjsPjson.json lib/package.json",
+      "command": "tsc --module commonjs --outDir cjs --incremental && cp scripts/cjsPjson.json cjs/package.json",
       "files": [
         "src/**/*.ts",
         "**/tsconfig.json",
         "messages/**"
       ],
       "output": [
-        "lib/**"
+        "cjs/**"
       ],
       "clean": "if-file-deleted"
     },
