@@ -10,7 +10,7 @@
  */
 type NamedErrorLike = Error & {
   readonly name: string;
-  readonly cause?: NamedErrorLike;
+  readonly cause?: NamedErrorLike | Error | unknown;
   readonly fullStack?: string;
 };
 
