@@ -7,8 +7,8 @@
 
 import { definiteEntriesOf, Dictionary, isKeyOf, KeyValue, Nullable, Optional, isNumber } from '@salesforce/ts-types';
 import { default as toNumber } from 'lodash.tonumber';
-import { InvalidDefaultEnvValueError } from './errors';
-import { toBoolean } from './nodash/internal';
+import { InvalidDefaultEnvValueError } from './errors.js';
+import { toBoolean } from './nodash/internal.js';
 /**
  * An injectable abstraction on top of `process.env` with various convenience functions
  * for accessing environment variables of different anticipated shapes.

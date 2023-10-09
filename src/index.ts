@@ -5,12 +5,12 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-export * from './creatable';
-export * from './duration';
-export * from './env';
-export * from './errors';
-export * from './json';
-export * from './nodash/internal';
-export * from './collections';
-export * from './throttledPromiseAll';
-export * from './settleAll';
+export * from './creatable.js';
+export * from './duration.js';
+export * from './env.js';
+export * from './errors.js';
+export * from './json.js';
+export * from './nodash/internal.js';
+export * from './collections.js';
+export * from './throttledPromiseAll.js';
+export * from './settleAll.js';
