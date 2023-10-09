@@ -13,5 +13,5 @@ module.exports = {
   rules: {
     '@typescript-eslint/ban-types': 'off',
   },
-  ignorePatterns: ['**/lib/**', '**/esm/**', '.eslintrc.*'],
+  ignorePatterns: ['**/cjs/**', '**/esm/**', '.eslintrc.*'],
 };
