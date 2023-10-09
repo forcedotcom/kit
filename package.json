@@ -2,11 +2,11 @@
   "name": "@salesforce/kit",
   "version": "3.0.13",
   "description": "Commonly needed utilities for TypeScript and JavaScript",
-  "main": "lib/index.js",
+  "main": "cjs/index.js",
   "repository": "forcedotcom/kit",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
-  "types": "lib/index.d.ts",
+  "types": "cjs/index.d.ts",
   "type": "module",
   "engines": {
     "node": ">=18.0.0"
@@ -78,7 +78,7 @@
       ]
     },
     "compile-esm": {
-      "command": "tsc --module es2022 --outDir esm --incremental && cp scripts/esmPjson.json esm/package.json",
+      "command": "tsc -p . --pretty --incremental && cp scripts/esmPjson.json esm/package.json",
       "files": [
         "src/**/*.ts",
         "**/tsconfig.json",
@@ -90,7 +90,7 @@
       "clean": "if-file-deleted"
     },
     "compile-cjs": {
-      "command": "tsc --module commonjs --outDir cjs --incremental && cp scripts/cjsPjson.json cjs/package.json",
+      "command": "tsc -p tsconfig-cjs.json --incremental && cp scripts/cjsPjson.json cjs/package.json",
       "files": [
         "src/**/*.ts",
         "**/tsconfig.json",

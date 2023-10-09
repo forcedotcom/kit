@@ -1,13 +1,13 @@
 {
   "wireit": {
     "compile-esm": {
-      "command": "tsc --module es2022 --outDir esm --incremental && cp scripts/esmPjson.json esm/package.json",
+      "command": "tsc -p . --pretty --incremental && cp scripts/esmPjson.json esm/package.json",
       "files": ["src/**/*.ts", "**/tsconfig.json", "messages/**"],
       "output": ["esm/**"],
       "clean": "if-file-deleted"
     },
     "compile-cjs": {
-      "command": "tsc --module commonjs --outDir cjs --incremental && cp scripts/cjsPjson.json cjs/package.json",
+      "command": "tsc -p tsconfig-cjs.json --incremental && cp scripts/cjsPjson.json cjs/package.json",
       "files": ["src/**/*.ts", "**/tsconfig.json", "messages/**"],
       "output": ["cjs/**"],
       "clean": "if-file-deleted"
