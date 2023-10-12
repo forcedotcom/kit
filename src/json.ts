@@ -15,7 +15,7 @@ import {
   JsonMap,
   Optional,
 } from '@salesforce/ts-types';
-import { JsonDataFormatError, JsonParseError, JsonStringifyError } from './errors';
+import { JsonDataFormatError, JsonParseError, JsonStringifyError } from './errors.js';
 
 /**
  * Parse JSON `string` data.

@@ -26,19 +26,19 @@ describe('Env', () => {
     });
   });
 
-  it('should get a string envar', () => {
+  it('should get a string envVar', () => {
     expect(env.getString('FOO')).to.equal('BAR');
   });
 
-  it('should get a default string when asked for a non-existent string envar', () => {
+  it('should get a default string when asked for a non-existent string envVar', () => {
     expect(env.getString('FOO2', 'BAR')).to.equal('BAR');
   });
 
-  it('should get a string envar from a known set of values', () => {
+  it('should get a string envVar from a known set of values', () => {
     expect(env.getStringIn('SET', ['a', 'b'])).to.equal('a');
   });
 
-  it('should get a string envar from a known set of values from an enum with differently cased keys', () => {
+  it('should get a string envVar from a known set of values from an enum with differently cased keys', () => {
     enum Expected {
       A,
       B,
@@ -62,19 +62,19 @@ describe('Env', () => {
     expect(() => env.getStringIn('SET2', ['a', 'b'], 'c')).to.throw(InvalidDefaultEnvValueError);
   });
 
-  it('should get a string envar as a key of an object', () => {
+  it('should get a string envVar as a key of an object', () => {
     const obj = { BAR: 'TEST' };
     const value = env.getKeyOf('FOO', obj);
     expect(value).to.equal('BAR');
   });
 
-  it('should get a string envar as a key of an object, with a transform', () => {
+  it('should get a string envVar as a key of an object, with a transform', () => {
     const obj = { bar: 'TEST' };
     const value = env.getKeyOf('FOO', obj, (v) => v.toLowerCase());
     expect(value).to.equal('bar');
   });
 
-  it('should get a string envar as a key of an enum, with a transform', () => {
+  it('should get a string envVar as a key of an enum, with a transform', () => {
     enum Mode {
       TEST = 'test',
       DEMO = 'demo',
@@ -84,7 +84,7 @@ describe('Env', () => {
     expect(Mode[value]).to.equal(Mode.TEST);
   });
 
-  it('should get a default for an undefined envar from an enum, with a transform', () => {
+  it('should get a default for an undefined envVar from an enum, with a transform', () => {
     enum Mode {
       TEST = 'test',
       DEMO = 'demo',
@@ -94,83 +94,83 @@ describe('Env', () => {
     expect(Mode[value]).to.equal(Mode.DEMO);
   });
 
-  it('should set a string envar', () => {
+  it('should set a string envVar', () => {
     env.setString('FOO2', 'BAR2');
     expect(env.getString('FOO2')).to.equal('BAR2');
   });
 
-  it('should get a list envar', () => {
+  it('should get a list envVar', () => {
     expect(env.getList('LIST')).to.deep.equal(['a', 'b', 'c']);
   });
 
-  it('should set a list envar', () => {
+  it('should set a list envVar', () => {
     env.setList('LIST2', ['a', 'b', 'c', 'd']);
     expect(env.getList('LIST2')).to.deep.equal(['a', 'b', 'c', 'd']);
   });
 
-  it('should unset a list envar implicitly', () => {
+  it('should unset a list envVar implicitly', () => {
     env.setList('LIST2', undefined);
     expect(env.getList('LIST2')).to.be.undefined;
   });
 
-  it('should delete a string envar explicitly', () => {
+  it('should delete a string envVar explicitly', () => {
     env.unset('FOO');
     expect(env.getString('FOO')).to.be.undefined;
   });
 
-  it('should delete a string envar implicitly', () => {
+  it('should delete a string envVar implicitly', () => {
     env.setString('FOO', undefined);
     expect(env.getString('FOO')).to.be.undefined;
   });
 
-  it('should get a boolean envar set to true', () => {
+  it('should get a boolean envVar set to true', () => {
     expect(env.getString('BOOL')).to.equal('true');
     expect(env.getBoolean('BOOL')).to.be.true;
   });
 
-  it('should get a boolean envar set to 1', () => {
+  it('should get a boolean envVar set to 1', () => {
     expect(env.getString('BOOL2')).to.equal('1');
     expect(env.getBoolean('BOOL2')).to.be.true;
   });
 
-  it('should get a default boolean when asked for a non-existent boolean envar', () => {
+  it('should get a default boolean when asked for a non-existent boolean envVar', () => {
     expect(env.getString('BOOL3', 'true')).to.equal('true');
     expect(env.getBoolean('BOOL3', true)).to.be.true;
   });
 
-  it('should set a boolean envar', () => {
+  it('should set a boolean envVar', () => {
     env.setBoolean('BOOL3', true);
     expect(env.getString('BOOL3')).to.equal('true');
     expect(env.getBoolean('BOOL3')).to.be.true;
   });
 
-  it('should delete a boolean envar', () => {
+  it('should delete a boolean envVar', () => {
     env.unset('BOOL');
     expect(env.getString('BOOL')).to.be.undefined;
     expect(env.getBoolean('BOOL')).to.be.false;
   });
 
-  it('should delete a boolean envar implicitly', () => {
+  it('should delete a boolean envVar implicitly', () => {
     env.setBoolean('BOOL', undefined);
     expect(env.getString('BOOL')).to.be.undefined;
     expect(env.getBoolean('BOOL')).to.be.false;
   });
 
-  it('should get a number envar set to 0', () => {
+  it('should get a number envVar set to 0', () => {
     env.setNumber('NUM', 0);
     expect(env.getString('NUM')).to.equal('0');
     expect(env.getNumber('NUM')).to.equal(0);
     expect(env.getBoolean('NUM')).to.be.false;
   });
 
-  it('should get a number envar set to positive', () => {
+  it('should get a number envVar set to positive', () => {
     env.setNumber('NUM2', 1);
     expect(env.getString('NUM2')).to.equal('1');
     expect(env.getNumber('NUM2')).to.equal(1);
     expect(env.getBoolean('NUM2')).to.be.true;
   });
 
-  it('should set a number envar to float', () => {
+  it('should set a number envVar to float', () => {
     env.setNumber('NUM3', 1.123);
     expect(env.getString('NUM3')).to.equal('1.123');
     expect(env.getNumber('NUM3')).to.equal(1.123);
@@ -180,7 +180,7 @@ describe('Env', () => {
     expect(env.getNumber('NUM4')).to.be.undefined;
   });
 
-  it('should get a default number when asked for a non-existent boolean envar', () => {
+  it('should get a default number when asked for a non-existent boolean envVar', () => {
     expect(env.getNumber('NUM5', 0)).to.equal(0);
   });
 
@@ -195,13 +195,13 @@ describe('Env', () => {
     expect(env.getNumber('NUM6', 0)).to.equal(0);
   });
 
-  it('should delete a number envar', () => {
+  it('should delete a number envVar', () => {
     env.unset('NUM');
     expect(env.getString('NUM')).to.be.undefined;
     expect(env.getNumber('NUM')).to.be.undefined;
   });
 
-  it('should delete a number envar implicitly', () => {
+  it('should delete a number envVar implicitly', () => {
     env.setNumber('NUM', undefined);
     expect(env.getString('NUM')).to.be.undefined;
     expect(env.getNumber('NUM')).to.be.undefined;

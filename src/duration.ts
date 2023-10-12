@@ -344,7 +344,7 @@ export function sleep(
   unit: Duration.Unit = Duration.Unit.MILLISECONDS
 ): InterruptablePromise<void> {
   const duration = durationOrQuantity instanceof Duration ? durationOrQuantity : new Duration(durationOrQuantity, unit);
-  let handle: Optional<NodeJS.Timer>;
+  let handle: Optional<NodeJS.Timeout>;
   let doResolve: () => void;
   const wake = (): undefined => {
     if (!handle) return;

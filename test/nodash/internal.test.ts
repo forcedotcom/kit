@@ -6,7 +6,7 @@
  */
 
 import { expect } from 'chai';
-import * as _ from '../../src/nodash';
+import * as _ from '../../src/nodash/internal';
 
 describe('nodash internal', () => {
   describe('isEmpty', () => {

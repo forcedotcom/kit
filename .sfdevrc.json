@@ -1,0 +1,24 @@
+{
+  "wireit": {
+    "compile-esm": {
+      "command": "tsc -p . --pretty --incremental && cp scripts/esmPjson.json esm/package.json",
+      "files": ["src/**/*.ts", "**/tsconfig.json", "messages/**"],
+      "output": ["esm/**"],
+      "clean": "if-file-deleted"
+    },
+    "compile-cjs": {
+      "command": "tsc -p tsconfig-cjs.json --incremental && cp scripts/cjsPjson.json cjs/package.json",
+      "files": ["src/**/*.ts", "**/tsconfig.json", "messages/**"],
+      "output": ["cjs/**"],
+      "clean": "if-file-deleted"
+    },
+    "compile": {
+      "dependencies": ["compile-esm", "compile-cjs"]
+    },
+    "lint": {
+      "command": "eslint src test --color",
+      "files": ["src/**/*.ts", "test/**/*.ts", "messages/**", "**/.eslint*", "**/tsconfig.json"],
+      "output": []
+    }
+  }
+}

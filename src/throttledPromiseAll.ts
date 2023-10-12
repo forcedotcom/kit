@@ -4,8 +4,8 @@
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-import { ensureArray } from './collections';
-import { Duration } from './duration';
+import { ensureArray } from './collections.js';
+import { Duration } from './duration.js';
 
 export type PromiseOptions = {
   concurrency: number;
