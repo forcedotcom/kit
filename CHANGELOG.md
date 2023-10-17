@@ -1,3 +1,9 @@
+## [3.0.14](https://github.com/forcedotcom/kit/compare/3.0.13...3.0.14) (2023-10-17)
+
+### Bug Fixes
+
+- **deps:** bump @babel/traverse from 7.15.0 to 7.23.2 ([ebc4ee6](https://github.com/forcedotcom/kit/commit/ebc4ee649330c59849ba38e7e32d9549905d9045))
+
 ## [3.0.13](https://github.com/forcedotcom/kit/compare/3.0.12...3.0.13) (2023-10-01)
 
 ### Bug Fixes
