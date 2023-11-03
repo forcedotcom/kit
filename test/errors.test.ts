@@ -5,7 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { versions } from 'process';
+import { versions } from 'node:process';
 import { expect } from 'chai';
 import { JsonParseError, NamedError } from '../src/errors';
 
