@@ -7,6 +7,33 @@
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "types": "lib/index.d.ts",
+  "exports": {
+    "./duration": {
+      "require": "./lib/duration.js",
+      "import": "./lib/duration.js",
+      "types": "./lib/duration.d.ts"
+    },
+    "./collections": {
+      "require": "./lib/collections.js",
+      "import": "./lib/collections.js",
+      "types": "./lib/collections.d.ts"
+    },
+    "./creatable": {
+      "require": "./lib/createable.js",
+      "import": "./lib/createable.js",
+      "types": "./lib/createable.d.ts"
+    },
+    "./env": {
+      "require": "./lib/env.js",
+      "import": "./lib/env.js",
+      "types": "./lib/env.d.ts"
+    },
+    ".": {
+      "require": "./lib/index.js",
+      "import": "./lib/index.js",
+      "types": "./lib/index.d.ts"
+    }
+  },
   "files": [
     "lib/**/*.js",
     "lib/**/*.d.ts",
