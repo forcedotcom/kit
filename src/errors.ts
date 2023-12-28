@@ -86,12 +86,6 @@ export class JsonParseError extends NamedError {
   }
 }
 
-export class JsonStringifyError extends NamedError {
-  public constructor(cause: Error) {
-    super('JsonStringifyError', cause);
-  }
-}
-
 export class JsonDataFormatError extends NamedError {
   public constructor(message: string) {
     super('JsonDataFormatError', message);

@@ -15,7 +15,7 @@ import {
   JsonMap,
   Optional,
 } from '@salesforce/ts-types';
-import { JsonDataFormatError, JsonParseError, JsonStringifyError } from './errors';
+import { JsonDataFormatError, JsonParseError } from './errors';
 
 /**
  * Parse JSON `string` data.
@@ -75,27 +75,6 @@ export function parseJsonMap<T extends JsonMap = JsonMap>(data: string, jsonPath
     throw new JsonDataFormatError('Expected parsed JSON data to be an object');
   }
   return json as T; // apply the requested type assertion
-}
-
-/**
- * Perform a deep clone of an object or array compatible with JSON stringification.
- * Object fields that are not compatible with stringification will be omitted. Array
- * entries that are not compatible with stringification will be censored as `null`.
- *
- * @param obj A JSON-compatible object or array to clone.
- * @throws {@link JsonStringifyError} If the object contains circular references or causes
- * other JSON stringification errors.
- */
-// eslint-disable-next-line @typescript-eslint/ban-types
-export function cloneJson<T extends object>(obj: T): T {
-  try {
-    return JSON.parse(JSON.stringify(obj)) as T;
-  } catch (err) {
-    if (err instanceof SyntaxError || err instanceof TypeError) {
-      throw new JsonStringifyError(err);
-    }
-    throw err;
-  }
 }
 
 /**
