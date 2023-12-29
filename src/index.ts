@@ -10,7 +10,6 @@ export * from './duration';
 export * from './env';
 export * from './errors';
 export * from './json';
-export * from './nodash';
 export * from './collections';
 export * from './throttledPromiseAll';
 export * from './settleAll';
