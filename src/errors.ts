@@ -91,9 +91,3 @@ export class JsonDataFormatError extends NamedError {
     super('JsonDataFormatError', message);
   }
 }
-
-export class InvalidDefaultEnvValueError extends NamedError {
-  public constructor(message: string) {
-    super('InvalidDefaultEnvValueError', message);
-  }
-}

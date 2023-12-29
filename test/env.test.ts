@@ -7,7 +7,6 @@
 
 import { expect } from 'chai';
 import { Env } from '../src/env';
-import { InvalidDefaultEnvValueError } from '../src/errors';
 
 describe('Env', () => {
   let env: Env;
@@ -34,83 +33,9 @@ describe('Env', () => {
     expect(env.getString('FOO2', 'BAR')).to.equal('BAR');
   });
 
-  it('should get a string envar from a known set of values', () => {
-    expect(env.getStringIn('SET', ['a', 'b'])).to.equal('a');
-  });
-
-  it('should get a string envar from a known set of values from an enum with differently cased keys', () => {
-    enum Expected {
-      A,
-      B,
-    }
-    expect(env.getStringIn('SET3', Object.keys(Expected))).to.equal('b');
-  });
-
-  it('should get undefined given an invalid member of a known set of values', () => {
-    expect(env.getStringIn('SET2', ['a', 'b'])).to.be.undefined;
-  });
-
-  it('should get a default given an invalid member of a known set of values', () => {
-    expect(env.getStringIn('SET2', ['a', 'b'], 'b')).to.equal('b');
-  });
-
-  it('should not throw given an valid default with different casing from the known set of values', () => {
-    expect(env.getStringIn('SET2', ['a', 'b', 'c'], 'C')).to.equal('c');
-  });
-
-  it('should throw given an invalid default and an invalid member of a known set of values', () => {
-    expect(() => env.getStringIn('SET2', ['a', 'b'], 'c')).to.throw(InvalidDefaultEnvValueError);
-  });
-
-  it('should get a string envar as a key of an object', () => {
-    const obj = { BAR: 'TEST' };
-    const value = env.getKeyOf('FOO', obj);
-    expect(value).to.equal('BAR');
-  });
-
-  it('should get a string envar as a key of an object, with a transform', () => {
-    const obj = { bar: 'TEST' };
-    const value = env.getKeyOf('FOO', obj, (v) => v.toLowerCase());
-    expect(value).to.equal('bar');
-  });
-
-  it('should get a string envar as a key of an enum, with a transform', () => {
-    enum Mode {
-      TEST = 'test',
-      DEMO = 'demo',
-    }
-    const value = env.getKeyOf('ENUM', Mode, Mode.DEMO, (v) => v.toUpperCase());
-    expect(value).to.equal('TEST');
-    expect(Mode[value]).to.equal(Mode.TEST);
-  });
-
-  it('should get a default for an undefined envar from an enum, with a transform', () => {
-    enum Mode {
-      TEST = 'test',
-      DEMO = 'demo',
-    }
-    const value = env.getKeyOf('ENUM2', Mode, Mode.DEMO, (v) => v.toUpperCase());
-    expect(value).to.equal('DEMO');
-    expect(Mode[value]).to.equal(Mode.DEMO);
-  });
-
   it('should set a string envar', () => {
     env.setString('FOO2', 'BAR2');
     expect(env.getString('FOO2')).to.equal('BAR2');
-  });
-
-  it('should get a list envar', () => {
-    expect(env.getList('LIST')).to.deep.equal(['a', 'b', 'c']);
-  });
-
-  it('should set a list envar', () => {
-    env.setList('LIST2', ['a', 'b', 'c', 'd']);
-    expect(env.getList('LIST2')).to.deep.equal(['a', 'b', 'c', 'd']);
-  });
-
-  it('should unset a list envar implicitly', () => {
-    env.setList('LIST2', undefined);
-    expect(env.getList('LIST2')).to.be.undefined;
   });
 
   it('should delete a string envar explicitly', () => {
