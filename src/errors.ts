@@ -81,7 +81,7 @@ export class JsonParseError extends NamedError {
   }
 
   private static format(cause: Error, path?: string, line?: number, errorPortion?: string): string {
-    if (line == null) return cause.message || 'Unknown cause';
+    if (line == null) return cause.message ?? 'Unknown cause';
     return `Parse error in file ${path ?? 'unknown'} on line ${line}\n${errorPortion ?? cause.message}`;
   }
 }

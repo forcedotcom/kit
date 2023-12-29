@@ -13,7 +13,7 @@ import { toBoolean } from './shared/functions';
  * for accessing environment variables of different anticipated shapes.
  */
 export class Env {
-  public constructor(private store: Dictionary<string> = process?.env || {}) {
+  public constructor(private store: Dictionary<string> = process?.env ?? {}) {
     this.store = store;
   }
 
