@@ -5,17 +5,8 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import {
-  AnyJson,
-  isBoolean,
-  isJsonArray,
-  isJsonMap,
-  isNumber,
-  isString,
-  JsonMap,
-  Optional,
-} from '@salesforce/ts-types';
-import { JsonDataFormatError, JsonParseError, JsonStringifyError } from './errors';
+import { AnyJson, isJsonArray, isJsonMap, JsonMap, Optional } from '@salesforce/ts-types';
+import { JsonDataFormatError, JsonParseError } from './errors';
 
 /**
  * Parse JSON `string` data.
@@ -78,27 +69,6 @@ export function parseJsonMap<T extends JsonMap = JsonMap>(data: string, jsonPath
 }
 
 /**
- * Perform a deep clone of an object or array compatible with JSON stringification.
- * Object fields that are not compatible with stringification will be omitted. Array
- * entries that are not compatible with stringification will be censored as `null`.
- *
- * @param obj A JSON-compatible object or array to clone.
- * @throws {@link JsonStringifyError} If the object contains circular references or causes
- * other JSON stringification errors.
- */
-// eslint-disable-next-line @typescript-eslint/ban-types
-export function cloneJson<T extends object>(obj: T): T {
-  try {
-    return JSON.parse(JSON.stringify(obj)) as T;
-  } catch (err) {
-    if (err instanceof SyntaxError || err instanceof TypeError) {
-      throw new JsonStringifyError(err);
-    }
-    throw err;
-  }
-}
-
-/**
  * Finds all elements of type `T` with a given name in a `JsonMap`. Not suitable for use
  * with object graphs containing circular references. The specification of an appropriate
  * type `T` that will satisfy all matching element values is the responsibility of the caller.
@@ -128,9 +98,9 @@ export function getJsonValuesByName<T extends AnyJson = AnyJson>(json: JsonMap, 
  * @param value The value search for.
  */
 export function jsonIncludes(json: Optional<AnyJson>, value: Optional<AnyJson>): boolean {
-  if (json == null || value === undefined || isNumber(json) || isBoolean(json)) return false;
+  if (json == null || value === undefined || typeof json === 'number' || typeof json === 'boolean') return false;
   if (isJsonMap(json)) return Object.values(json).includes(value);
   if (isJsonArray(json)) return json.includes(value);
-  if (isString(value)) return json.includes(value);
+  if (typeof value === 'string') return json.includes(value);
   return false;
 }

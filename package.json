@@ -7,10 +7,36 @@
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "types": "lib/index.d.ts",
+  "exports": {
+    "./duration": {
+      "require": "./lib/duration.js",
+      "import": "./lib/duration.js",
+      "types": "./lib/duration.d.ts"
+    },
+    "./collections": {
+      "require": "./lib/collections.js",
+      "import": "./lib/collections.js",
+      "types": "./lib/collections.d.ts"
+    },
+    "./creatable": {
+      "require": "./lib/createable.js",
+      "import": "./lib/createable.js",
+      "types": "./lib/createable.d.ts"
+    },
+    "./env": {
+      "require": "./lib/env.js",
+      "import": "./lib/env.js",
+      "types": "./lib/env.d.ts"
+    },
+    ".": {
+      "require": "./lib/index.js",
+      "import": "./lib/index.js",
+      "types": "./lib/index.d.ts"
+    }
+  },
   "files": [
     "lib/**/*.js",
-    "lib/**/*.d.ts",
-    "vendor/lodash.js"
+    "lib/**/*.d.ts"
   ],
   "scripts": {
     "build": "wireit",
@@ -22,7 +48,6 @@
     "link-check": "wireit",
     "lint": "wireit",
     "lint-fix": "yarn sf-lint --fix",
-    "lodash": "./scripts/build-lodash.sh",
     "prepack": "sf-prepack",
     "prepare": "sf-install",
     "test": "wireit",
@@ -34,7 +59,6 @@
   },
   "devDependencies": {
     "@salesforce/dev-scripts": "^8.1.2",
-    "lodash-cli": "^4.17.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },

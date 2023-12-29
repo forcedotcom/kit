@@ -5,9 +5,9 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { Dictionary, JsonMap } from '@salesforce/ts-types';
+import { JsonMap } from '@salesforce/ts-types';
 import { expect } from 'chai';
-import { JsonDataFormatError, JsonParseError, JsonStringifyError } from '../src/errors';
+import { JsonDataFormatError, JsonParseError } from '../src/errors';
 import * as json from '../src/json';
 
 describe('json', () => {
@@ -50,28 +50,6 @@ describe('json', () => {
 
     it('fails to parse a valid json array', () => {
       expect(() => json.parseJsonMap('[{},{}]')).to.throw(JsonDataFormatError);
-    });
-  });
-
-  describe('cloneJson', () => {
-    it('clones a valid json map', () => {
-      const o = { a: 'a', b: ['b'] };
-      const clone = json.cloneJson(o);
-      expect(clone).to.deep.equal(o);
-      expect(clone).to.not.equal(o);
-    });
-
-    it('clones a valid json array', () => {
-      const a = [{ a: 'a', b: ['b'] }, ['c', 1, true]];
-      const clone = json.cloneJson(a);
-      expect(clone).to.deep.equal(a);
-      expect(clone).to.not.equal(a);
-    });
-
-    it('fails to clone an object with circular references', () => {
-      const o: Dictionary = {};
-      o.o = o;
-      expect(() => json.cloneJson(o)).to.throw(JsonStringifyError);
     });
   });
 
