@@ -5,16 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import {
-  AnyJson,
-  isBoolean,
-  isJsonArray,
-  isJsonMap,
-  isNumber,
-  isString,
-  JsonMap,
-  Optional,
-} from '@salesforce/ts-types';
+import { AnyJson, isJsonArray, isJsonMap, JsonMap, Optional } from '@salesforce/ts-types';
 import { JsonDataFormatError, JsonParseError } from './errors';
 
 /**
@@ -107,9 +98,9 @@ export function getJsonValuesByName<T extends AnyJson = AnyJson>(json: JsonMap, 
  * @param value The value search for.
  */
 export function jsonIncludes(json: Optional<AnyJson>, value: Optional<AnyJson>): boolean {
-  if (json == null || value === undefined || isNumber(json) || isBoolean(json)) return false;
+  if (json == null || value === undefined || typeof json === 'number' || typeof json === 'boolean') return false;
   if (isJsonMap(json)) return Object.values(json).includes(value);
   if (isJsonArray(json)) return json.includes(value);
-  if (isString(value)) return json.includes(value);
+  if (typeof value === 'string') return json.includes(value);
   return false;
 }

@@ -5,7 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
-import { Optional } from '@salesforce/ts-types';
+import type { Optional } from '@salesforce/ts-types';
 
 /**
  * A simple utility class for converting durations between minutes, seconds, and milliseconds.
@@ -14,35 +14,29 @@ export class Duration {
   /**
    * The number of milliseconds in one second.
    */
-  public static readonly MILLIS_IN_SECONDS: number = 1000;
+  public static readonly MILLIS_IN_SECONDS = 1000;
 
   /**
    * The number of seconds in one minute.
    */
-  public static readonly SECONDS_IN_MINUTE: number = 60;
+  public static readonly SECONDS_IN_MINUTE = 60;
 
   /**
    * The number of minutes in one hour.
    */
-  public static readonly MINUTES_IN_HOUR: number = 60;
+  public static readonly MINUTES_IN_HOUR = 60;
 
   /**
    * The number of hours in one day.
    */
-  public static readonly HOURS_IN_DAY: number = 24;
+  public static readonly HOURS_IN_DAY = 24;
 
   /**
    * The number of days in one week.
    */
-  public static readonly DAYS_IN_WEEK: number = 7;
+  public static readonly DAYS_IN_WEEK = 7;
 
-  public readonly quantity: number;
-  public readonly unit: Duration.Unit;
-
-  public constructor(quantity: number, unit: Duration.Unit = Duration.Unit.MINUTES) {
-    this.quantity = quantity;
-    this.unit = unit;
-  }
+  public constructor(public quantity: number, public unit: Duration.Unit = Duration.Unit.MINUTES) {}
 
   /**
    * Returns the current number of minutes represented by this `Duration` instance, rounded to the nearest integer
