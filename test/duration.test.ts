@@ -10,39 +10,39 @@ import { Duration, sleep } from '../src/duration';
 
 describe('duration', () => {
   it('should have accessible quantity and units', () => {
-    const duration = Duration.milliseconds(60000);
-    expect(duration.quantity).to.equal(60000);
+    const duration = Duration.milliseconds(60_000);
+    expect(duration.quantity).to.equal(60_000);
     expect(duration.unit).to.equal(Duration.Unit.MILLISECONDS);
   });
 
   describe('millseconds', () => {
     it('should convert milliseconds to milliseconds', () => {
-      const duration = Duration.milliseconds(60000);
-      expect(duration.milliseconds).to.equal(60000);
+      const duration = Duration.milliseconds(60_000);
+      expect(duration.milliseconds).to.equal(60_000);
     });
 
     it('should convert milliseconds to seconds', () => {
-      const duration = Duration.milliseconds(60000);
+      const duration = Duration.milliseconds(60_000);
       expect(duration.seconds).to.equal(60);
     });
 
     it('should convert milliseconds to minutes', () => {
-      const duration = Duration.milliseconds(60000);
+      const duration = Duration.milliseconds(60_000);
       expect(duration.minutes).to.equal(1);
     });
 
     it('should convert milliseconds to hours', () => {
-      const duration = Duration.milliseconds(3600000);
+      const duration = Duration.milliseconds(3_600_000);
       expect(duration.hours).to.equal(1);
     });
 
     it('should convert milliseconds to day', () => {
-      const duration = Duration.milliseconds(86400000);
+      const duration = Duration.milliseconds(86_400_000);
       expect(duration.days).to.equal(1);
     });
 
     it('should convert milliseconds to week', () => {
-      const duration = Duration.milliseconds(604800000);
+      const duration = Duration.milliseconds(604_800_000);
       expect(duration.weeks).to.equal(1);
     });
   });
@@ -69,12 +69,12 @@ describe('duration', () => {
     });
 
     it('should convert seconds to days', () => {
-      const duration = Duration.seconds(86400);
+      const duration = Duration.seconds(86_400);
       expect(duration.days).to.equal(1);
     });
 
     it('should convert seconds to weeks', () => {
-      const duration = Duration.seconds(604800);
+      const duration = Duration.seconds(604_800);
       expect(duration.weeks).to.equal(1);
     });
   });
@@ -82,7 +82,7 @@ describe('duration', () => {
   describe('minutes', () => {
     it('should convert minutes to milliseconds', () => {
       const duration = Duration.minutes(1);
-      expect(duration.milliseconds).to.equal(60000);
+      expect(duration.milliseconds).to.equal(60_000);
     });
 
     it('should convert minutes to seconds', () => {
@@ -106,7 +106,7 @@ describe('duration', () => {
     });
 
     it('should convert minutes to weeks', () => {
-      const duration = Duration.minutes(10080);
+      const duration = Duration.minutes(10_080);
       expect(duration.weeks).to.equal(1);
     });
   });
@@ -114,7 +114,7 @@ describe('duration', () => {
   describe('hours', () => {
     it('should convert hours to milliseconds', () => {
       const duration = Duration.hours(1);
-      expect(duration.milliseconds).to.equal(3600000);
+      expect(duration.milliseconds).to.equal(3_600_000);
     });
 
     it('should convert hours to seconds', () => {
@@ -146,12 +146,12 @@ describe('duration', () => {
   describe('days', () => {
     it('should convert days to milliseconds', () => {
       const duration = Duration.days(1);
-      expect(duration.milliseconds).to.equal(86400000);
+      expect(duration.milliseconds).to.equal(86_400_000);
     });
 
     it('should convert days to seconds', () => {
       const duration = Duration.days(1);
-      expect(duration.seconds).to.equal(86400);
+      expect(duration.seconds).to.equal(86_400);
     });
 
     it('should convert days to minutes', () => {
@@ -178,17 +178,17 @@ describe('duration', () => {
   describe('weeks', () => {
     it('should convert weeks to milliseconds', () => {
       const duration = Duration.weeks(1);
-      expect(duration.milliseconds).to.equal(604800000);
+      expect(duration.milliseconds).to.equal(604_800_000);
     });
 
     it('should convert weeks to seconds', () => {
       const duration = Duration.weeks(1);
-      expect(duration.seconds).to.equal(604800);
+      expect(duration.seconds).to.equal(604_800);
     });
 
     it('should convert weeks to minutes', () => {
       const duration = Duration.weeks(1);
-      expect(duration.minutes).to.equal(10080);
+      expect(duration.minutes).to.equal(10_080);
     });
 
     it('should convert weeks to hours', () => {
