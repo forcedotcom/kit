@@ -14,3 +14,4 @@ export * from './nodash';
 export * from './collections';
 export * from './throttledPromiseAll';
 export * from './settleAll';
+export { logFn } from './log';
