@@ -1,3 +1,12 @@
+# [3.1.0](https://github.com/forcedotcom/kit/compare/3.0.15...3.1.0) (2024-03-26)
+
+
+### Features
+
+* logFn ([#308](https://github.com/forcedotcom/kit/issues/308)) ([7eb6a7e](https://github.com/forcedotcom/kit/commit/7eb6a7e79f29d439990cce79d188a6d5a8b2a86e))
+
+
+
 ## [3.0.15](https://github.com/forcedotcom/kit/compare/3.0.14...3.0.15) (2023-10-22)
 
 
