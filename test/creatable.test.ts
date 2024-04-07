@@ -27,7 +27,7 @@ class Config<O extends Config.Options> extends AsyncCreatable<O> {
 }
 
 namespace Config {
-  export interface Options {
+  export type Options = {
     fooEnabled: boolean;
     doAsyncThing: () => Promise<void>;
   }
@@ -48,9 +48,9 @@ class SubConfig extends Config<SubConfig.Options> {
 }
 
 namespace SubConfig {
-  export interface Options extends Config.Options {
+  export type Options = {
     barEnabled: boolean;
-  }
+  } & Config.Options
 }
 
 class OptionalConfig extends AsyncOptionalCreatable<OptionalConfig.Options> {
@@ -72,7 +72,7 @@ class OptionalConfig extends AsyncOptionalCreatable<OptionalConfig.Options> {
 }
 
 namespace OptionalConfig {
-  export interface Options {
+  export type Options = {
     bazEnabled: boolean;
   }
 }
