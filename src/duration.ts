@@ -294,7 +294,7 @@ export namespace Duration {
 /**
  * An abstraction for any interruptable operation.
  */
-export interface Interruptable {
+export type Interruptable = {
   interrupt: () => void;
 }
 
