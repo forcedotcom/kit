@@ -33,7 +33,7 @@
     "tslib": "^2.6.2"
   },
   "devDependencies": {
-    "@salesforce/dev-scripts": "^8.5.0",
+    "@salesforce/dev-scripts": "^9.0.0",
     "lodash-cli": "^4.17.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
