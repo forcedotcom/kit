@@ -1,3 +1,12 @@
+## [3.1.1](https://github.com/forcedotcom/kit/compare/3.1.0...3.1.1) (2024-04-15)
+
+
+### Bug Fixes
+
+* regenerate lodash.js for prototype vuln ([#312](https://github.com/forcedotcom/kit/issues/312)) ([1827036](https://github.com/forcedotcom/kit/commit/1827036c8f259b5beb6fbb8b2ea5fa5b941eda83))
+
+
+
 # [3.1.0](https://github.com/forcedotcom/kit/compare/3.0.15...3.1.0) (2024-03-26)
 
 
