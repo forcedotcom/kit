@@ -1,3 +1,12 @@
+## [3.1.2](https://github.com/forcedotcom/kit/compare/3.1.1...3.1.2) (2024-05-24)
+
+
+### Bug Fixes
+
+* map/set logging ([#317](https://github.com/forcedotcom/kit/issues/317)) ([fcb0973](https://github.com/forcedotcom/kit/commit/fcb0973cc2949a2d6d4028607fc0d5b5e0662ebc))
+
+
+
 ## [3.1.1](https://github.com/forcedotcom/kit/compare/3.1.0...3.1.1) (2024-04-15)
 
 
