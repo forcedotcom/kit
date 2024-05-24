@@ -18,6 +18,6 @@
  */
 export const logFn = <T>(x: T): T => {
   // eslint-disable-next-line no-console
-  console.log(typeof x === 'object' ? JSON.stringify(x, null, 2) : x);
+  console.log(typeof x === 'object' && !(x instanceof Set) && !(x instanceof Map) ? JSON.stringify(x, null, 2) : x);
   return x;
 };
