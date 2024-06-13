@@ -1,3 +1,12 @@
+## [3.1.4](https://github.com/forcedotcom/kit/compare/3.1.3...3.1.4) (2024-06-13)
+
+
+### Bug Fixes
+
+* **deps:** bump braces from 3.0.2 to 3.0.3 ([714d646](https://github.com/forcedotcom/kit/commit/714d646f61435e7b6bc0f11051f183acd8fef269))
+
+
+
 ## [3.1.3](https://github.com/forcedotcom/kit/compare/3.1.2...3.1.3) (2024-06-09)
 
 
