@@ -1,3 +1,12 @@
+## [3.1.6](https://github.com/forcedotcom/kit/compare/3.1.5...3.1.6) (2024-06-18)
+
+
+### Bug Fixes
+
+* private method => function ([996e59f](https://github.com/forcedotcom/kit/commit/996e59f4b1cb83a5d720feaaec6507cafc611b98))
+
+
+
 ## [3.1.5](https://github.com/forcedotcom/kit/compare/3.1.4...3.1.5) (2024-06-16)
 
 
