@@ -266,13 +266,7 @@ export class Duration {
    * The string representation of this `Duration`. e.g. "645 seconds"
    */
   public toString(): string {
-    return this.pluralize();
-  }
-
-  private pluralize(num = this.quantity, unit = this.unit): string {
-    const name = Duration.Unit[unit].toLowerCase();
-    if (num === 1) return `${num} ${name.slice(0, name.length - 1)}`;
-    return `${num} ${name}`;
+    return pluralize(this.quantity, this.unit);
   }
 }
 
@@ -296,7 +290,7 @@ export namespace Duration {
  */
 export type Interruptable = {
   interrupt: () => void;
-}
+};
 
 /**
  * A promise of result type `T` that can be interrupted prematurely, resulting in an early resolution.
@@ -358,3 +352,8 @@ export function sleep(
   });
   return Object.assign(promise, { interrupt: wake });
 }
+
+const pluralize = (num: number, unit: Duration.Unit): string => {
+  const name = Duration.Unit[unit].toLowerCase();
+  return `${num} ${num === 1 ? name.slice(0, name.length - 1) : name}`;
+};
