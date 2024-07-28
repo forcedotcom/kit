@@ -32,7 +32,7 @@
     "@salesforce/ts-types": "^2.0.10"
   },
   "devDependencies": {
-    "@salesforce/dev-scripts": "^10.2.2",
+    "@salesforce/dev-scripts": "^10.2.4",
     "lodash-cli": "^4.17.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
