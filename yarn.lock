@@ -518,19 +518,19 @@
   resolved "https://registry.npmjs.org/@pkgjs/parseargs/-/parseargs-0.11.0.tgz#a77ea742fab25775145434eb1d2328cf5013ac33"
   integrity sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
 
-"@salesforce/dev-config@^4.2.0":
-  version "4.2.0"
-  resolved "https://registry.npmjs.org/@salesforce/dev-config/-/dev-config-4.2.0.tgz#65a59b95aeb4f5512435770da43cba780aa0cfc7"
-  integrity sha512-ahmHPhUslKhIe6qCaZTmMmHZrTXRhUcoMXVimEJaDPxTw2q3Dloq/lehWZdhLsRQCDKscP0WPIOdKulIgZJFBg==
+"@salesforce/dev-config@^4.3.0":
+  version "4.3.0"
+  resolved "https://registry.npmjs.org/@salesforce/dev-config/-/dev-config-4.3.0.tgz#d3e9d626c5a02d0d312cb92e5cf3b1c6bf7f1fb9"
+  integrity sha512-NCiVxmF3ooSnxwPQ6RMemXuSkhSDGhzLYwoMylnsyHCQMWHxxX+aAspPOAmbOyo7Jgwf+01D+dpXcSVriGbSfQ==
 
-"@salesforce/dev-scripts@^10.2.4":
-  version "10.2.4"
-  resolved "https://registry.npmjs.org/@salesforce/dev-scripts/-/dev-scripts-10.2.4.tgz#96db880979b74ca09f1fcc214670a17f3d8a4b72"
-  integrity sha512-FVeM/sxZpGMKfi/+PSgzKoJblaX/kNzE4zg9TSBc1Db+H7X4zgvCX58GVtlOD3Uihmt3VnwkkI/ecH5jDFzJjQ==
+"@salesforce/dev-scripts@^10.2.5":
+  version "10.2.5"
+  resolved "https://registry.npmjs.org/@salesforce/dev-scripts/-/dev-scripts-10.2.5.tgz#f673221268b7038d4ae477d5e217059539e682a8"
+  integrity sha512-QedF//BcK5N/SMdpgYCKbcdV85qXcd8mwrF9mGz5AO3EWpRMyqFNPzruSP4kyOV0wSyG0CmA3QpTne0syzTz+w==
   dependencies:
     "@commitlint/cli" "^17.1.2"
     "@commitlint/config-conventional" "^17.8.1"
-    "@salesforce/dev-config" "^4.2.0"
+    "@salesforce/dev-config" "^4.3.0"
     "@salesforce/prettier-config" "^0.0.3"
     "@types/chai" "^4.3.14"
     "@types/mocha" "^10.0.7"
@@ -552,7 +552,7 @@
     ts-node "^10.9.2"
     typedoc "^0.26.5"
     typedoc-plugin-missing-exports "0.23.0"
-    typescript "^5.4.3"
+    typescript "^5.5.4"
     wireit "^0.14.5"
 
 "@salesforce/prettier-config@^0.0.3":
@@ -560,10 +560,10 @@
   resolved "https://registry.npmjs.org/@salesforce/prettier-config/-/prettier-config-0.0.3.tgz#ba648d4886bb38adabe073dbea0b3a91b3753bb0"
   integrity sha512-hYOhoPTCSYMDYn+U1rlEk16PoBeAJPkrdg4/UtAzupM1mRRJOwEPMG1d7U8DxJFKuXW3DMEYWr2MwAIBDaHmFg==
 
-"@salesforce/ts-types@^2.0.10":
-  version "2.0.10"
-  resolved "https://registry.npmjs.org/@salesforce/ts-types/-/ts-types-2.0.10.tgz#f2107a52b60be6c3fe712f4d40aafad48c6bebe0"
-  integrity sha512-ulGQ1oUGXrmSUi6NGbxZZ7ykSDv439x+WYZpkMgFLC8Dx0TxJXfUAJYeZh7eKO5xI/ob3iyvN+RBcBkp4KFN1w==
+"@salesforce/ts-types@^2.0.11":
+  version "2.0.11"
+  resolved "https://registry.npmjs.org/@salesforce/ts-types/-/ts-types-2.0.11.tgz#5a603f70d047efd4fe031277850ed981ee2537c9"
+  integrity sha512-bkUcv/yXnIZZ7IcIgoqAjH4ZN5RHr/8LYjIcDVWNVig5Yb8U9Had4PkIls9N1ft5mEYgc8cbxOzyea/JofhXhA==
 
 "@shikijs/core@1.12.0":
   version "1.12.0"
@@ -3696,16 +3696,7 @@ srcset@^5.0.0:
   resolved "https://registry.npmjs.org/srcset/-/srcset-5.0.0.tgz#9df6c3961b5b44a02532ce6ae4544832609e2e3f"
   integrity sha512-SqEZaAEhe0A6ETEa9O1IhSPC7MdvehZtCnTR0AftXk3QhY2UNgb+NApFOUPZILXk/YTDfFxMTNJOBpzrJsEdIA==
 
-"string-width-cjs@npm:string-width@^4.2.0":
-  version "4.2.3"
-  resolved "https://registry.npmjs.org/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
-  integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
-  dependencies:
-    emoji-regex "^8.0.0"
-    is-fullwidth-code-point "^3.0.0"
-    strip-ansi "^6.0.1"
-
-string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3:
+"string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0, string-width@^4.2.0, string-width@^4.2.3:
   version "4.2.3"
   resolved "https://registry.npmjs.org/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
@@ -3756,14 +3747,7 @@ string_decoder@^1.1.1:
   dependencies:
     safe-buffer "~5.2.0"
 
-"strip-ansi-cjs@npm:strip-ansi@^6.0.1":
-  version "6.0.1"
-  resolved "https://registry.npmjs.org/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
-  integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
-  dependencies:
-    ansi-regex "^5.0.1"
-
-strip-ansi@^6.0.0, strip-ansi@^6.0.1:
+"strip-ansi-cjs@npm:strip-ansi@^6.0.1", strip-ansi@^6.0.0, strip-ansi@^6.0.1:
   version "6.0.1"
   resolved "https://registry.npmjs.org/strip-ansi/-/strip-ansi-6.0.1.tgz#9e26c63d30f53443e9489495b2105d37b67a85d9"
   integrity sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==
@@ -3999,10 +3983,10 @@ typescript@^4.6.4:
   resolved "https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz#095979f9bcc0d09da324d58d03ce8f8374cbe65a"
   integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==
 
-typescript@^5.4.3, typescript@^5.4.5:
-  version "5.4.5"
-  resolved "https://registry.npmjs.org/typescript/-/typescript-5.4.5.tgz#42ccef2c571fdbd0f6718b1d1f5e6e5ef006f611"
-  integrity sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==
+typescript@^5.5.4:
+  version "5.5.4"
+  resolved "https://registry.npmjs.org/typescript/-/typescript-5.5.4.tgz#d9852d6c82bad2d2eda4fd74a5762a8f5909e9ba"
+  integrity sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==
 
 uc.micro@^2.0.0, uc.micro@^2.1.0:
   version "2.1.0"
