@@ -20,16 +20,16 @@ describe('NamedError', () => {
     const three = new NamedError('ThreeError', two);
     three.stack = `${three.name}:\n    at test:3:1`;
 
-    expect(three.fullStack).to.equal(
-      `ThreeError:
-    at test:3:1
-Caused by: TwoError: message two
-    at test:2:1
-Caused by: OneError:
-    at test:1:1
-Caused by: Error: message zero
-    at test:0:1`
-    );
+    [
+      'NamedError [ThreeError]',
+      'at test:3:1',
+      'cause: NamedError [TwoError]: message two',
+      'at test:2:1',
+      'cause: NamedError [OneError]',
+      'at test:1:1',
+      'cause: Error: message zero',
+      'at test:0:1',
+    ].map((line) => expect(three.fullStack).to.contain(line));
   });
 });
 

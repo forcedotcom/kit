@@ -4,7 +4,7 @@
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-
+import { format } from 'node:util';
 /**
  * Any `Error` compatible with the `NamedError` type signature.
  */
@@ -35,12 +35,7 @@ export class NamedError extends Error {
   }
 
   public get fullStack(): string | undefined {
-    let stack = this.stack;
-    const causedStack = this.cause instanceof NamedError ? this.cause?.fullStack ?? this.cause?.stack : undefined;
-    if (causedStack) {
-      stack = `${stack ? stack + '\n' : ''}Caused by: ${causedStack}`;
-    }
-    return stack;
+    return format(this);
   }
 }
 
