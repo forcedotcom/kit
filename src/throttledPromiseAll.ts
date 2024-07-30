@@ -167,7 +167,7 @@ export class ThrottledPromiseAll<T, O = T> {
       const r = await Promise.race(concurrencyPool.values());
       const rIndex = r?.index ?? -1;
       if (!concurrencyPool.has(rIndex)) {
-        throw new Error(`PromiseQueue: Could not find index ${r?.index} in pool`);
+        throw new Error(`PromiseQueue: Could not find index ${r?.index ?? '<undefined>'} in pool`);
       }
       concurrencyPool.delete(rIndex);
       this.#results.push(r);

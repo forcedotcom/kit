@@ -4,15 +4,18 @@
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-
+import { inspect } from 'node:util';
 /**
  * Any `Error` compatible with the `NamedError` type signature.
  */
-type NamedErrorLike = Error & {
-  readonly name: string;
-  readonly cause?: NamedErrorLike;
-  readonly fullStack?: string;
-};
+type NamedErrorLike =
+  | Error
+  | NamedError
+  | {
+      readonly name: string;
+      readonly cause?: NamedErrorLike;
+      readonly fullStack?: string;
+    };
 
 export class NamedError extends Error {
   public readonly name: string;
@@ -32,12 +35,7 @@ export class NamedError extends Error {
   }
 
   public get fullStack(): string | undefined {
-    let stack = this.stack;
-    const causedStack = this.cause?.fullStack ?? this.cause?.stack;
-    if (causedStack) {
-      stack = `${stack ? stack + '\n' : ''}Caused by: ${causedStack}`;
-    }
-    return stack;
+    return inspect(this);
   }
 }
 
