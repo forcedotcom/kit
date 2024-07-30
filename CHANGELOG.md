@@ -1,3 +1,12 @@
+# [3.2.0](https://github.com/forcedotcom/kit/compare/3.1.6...3.2.0) (2024-07-30)
+
+
+### Features
+
+* support native ES Error ([#325](https://github.com/forcedotcom/kit/issues/325)) ([652c0d6](https://github.com/forcedotcom/kit/commit/652c0d6d6867a3eff58c62dc3672867481375228))
+
+
+
 ## [3.1.6](https://github.com/forcedotcom/kit/compare/3.1.5...3.1.6) (2024-06-18)
 
 
