@@ -29,7 +29,7 @@
     "test:only": "wireit"
   },
   "dependencies": {
-    "@salesforce/ts-types": "^2.0.11"
+    "@salesforce/ts-types": "^2.0.12"
   },
   "devDependencies": {
     "@salesforce/dev-scripts": "^10.2.5",
