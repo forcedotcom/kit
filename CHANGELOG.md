@@ -1,3 +1,12 @@
+## [3.2.2](https://github.com/forcedotcom/kit/compare/3.2.1...3.2.2) (2024-08-31)
+
+
+### Bug Fixes
+
+* **deps:** bump micromatch from 4.0.4 to 4.0.8 ([8c7443b](https://github.com/forcedotcom/kit/commit/8c7443b0fd5c63cc68a1d92990536f07ea6b302a))
+
+
+
 ## [3.2.1](https://github.com/forcedotcom/kit/compare/3.2.0...3.2.1) (2024-08-04)
 
 
