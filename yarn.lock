@@ -489,10 +489,10 @@
   resolved "https://registry.npmjs.org/@salesforce/dev-config/-/dev-config-4.3.1.tgz#4dac8245df79d675258b50e1d24e8c636eaa5e10"
   integrity sha512-rO6axodoRF2SA1kknGttIWuL7HhIwSmweGlBzM8y2m5TH8DeIv4xsqYc8Cu+SrR3JT1FN4nh6XgrogI83AJfKg==
 
-"@salesforce/dev-scripts@^10.2.9":
-  version "10.2.9"
-  resolved "https://registry.npmjs.org/@salesforce/dev-scripts/-/dev-scripts-10.2.9.tgz#c107c177de6c8b282d5eee95e1c04e71f80650b6"
-  integrity sha512-kjICKRzDmkyfB78D+mAoOxdKChv5NAAQMzGYqGIPxNHTG2f9J0/sfjEJsWt+4gZAnAD8unS0MsPoKQqi2BDMNg==
+"@salesforce/dev-scripts@^10.2.10":
+  version "10.2.10"
+  resolved "https://registry.npmjs.org/@salesforce/dev-scripts/-/dev-scripts-10.2.10.tgz#6aca3c6a0926b5ed0710d1f21a940687ff994e58"
+  integrity sha512-4vYRV5PvssKWfsnOOAXDvYfHaj2M3bCprlGcZBGnPAi52cNzoj9GcOmC1RRrPdQmHL4vWZvSiqgRgVLKQQdfkw==
   dependencies:
     "@commitlint/cli" "^17.1.2"
     "@commitlint/config-conventional" "^17.8.1"
@@ -3227,11 +3227,7 @@ picocolors@^1.0.0, picocolors@^1.0.1:
   resolved "https://registry.npmjs.org/picocolors/-/picocolors-1.0.1.tgz#a8ad579b571952f0e5d25892de5445bcfe25aaa1"
   integrity sha512-anP1Z8qwhkbmu7MFP5iTt+wQKXgwzf7zTyGlcdzabySa9vd0Xt392U0rVmz9poOaBj0uHJKyyo9/upk0HrEQew==
 
-picomatch@^2.0.4, picomatch@^2.2.1:
-  version "2.3.0"
-  resolved "https://registry.npmjs.org/picomatch/-/picomatch-2.3.0.tgz"
-
-picomatch@^2.3.1:
+picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.3.1:
   version "2.3.1"
   resolved "https://registry.npmjs.org/picomatch/-/picomatch-2.3.1.tgz#3ba3833733646d9d3e4995946c1365a67fb07a42"
   integrity sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
