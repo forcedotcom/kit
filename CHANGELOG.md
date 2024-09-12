@@ -1,3 +1,12 @@
+## [3.2.3](https://github.com/forcedotcom/kit/compare/3.2.2...3.2.3) (2024-09-12)
+
+
+### Bug Fixes
+
+* **deps:** bump path-to-regexp from 1.8.0 to 1.9.0 ([13d1bc3](https://github.com/forcedotcom/kit/commit/13d1bc3d17b0323f3482d65872cbdafda5d5f639))
+
+
+
 ## [3.2.2](https://github.com/forcedotcom/kit/compare/3.2.1...3.2.2) (2024-08-31)
 
 
