@@ -1,8 +1,17 @@
 /*
- * Copyright (c) 2018, salesforce.com, inc.
- * All rights reserved.
- * Licensed under the BSD 3-Clause license.
- * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
+ * Copyright 2025, Salesforce, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 import { expect } from 'chai';
@@ -38,12 +47,8 @@ describe('Env', () => {
     expect(env.getStringIn('SET', ['a', 'b'])).to.equal('a');
   });
 
-  it('should get a string envar from a known set of values from an enum with differently cased keys', () => {
-    enum Expected {
-      A,
-      B,
-    }
-    expect(env.getStringIn('SET3', Object.keys(Expected))).to.equal('b');
+  it('should get a string envar from a known set of values with differently cased keys', () => {
+    expect(env.getStringIn('SET3', ['A', 'B'])).to.equal('b');
   });
 
   it('should get undefined given an invalid member of a known set of values', () => {
@@ -75,20 +80,20 @@ describe('Env', () => {
   });
 
   it('should get a string envar as a key of an enum, with a transform', () => {
-    enum Mode {
-      TEST = 'test',
-      DEMO = 'demo',
-    }
+    const Mode = {
+      TEST: 'test',
+      DEMO: 'demo',
+    } as const;
     const value = env.getKeyOf('ENUM', Mode, Mode.DEMO, (v) => v.toUpperCase());
     expect(value).to.equal('TEST');
     expect(Mode[value]).to.equal(Mode.TEST);
   });
 
   it('should get a default for an undefined envar from an enum, with a transform', () => {
-    enum Mode {
-      TEST = 'test',
-      DEMO = 'demo',
-    }
+    const Mode = {
+      TEST: 'test',
+      DEMO: 'demo',
+    } as const;
     const value = env.getKeyOf('ENUM2', Mode, Mode.DEMO, (v) => v.toUpperCase());
     expect(value).to.equal('DEMO');
     expect(Mode[value]).to.equal(Mode.DEMO);
