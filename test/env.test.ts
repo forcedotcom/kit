@@ -47,12 +47,8 @@ describe('Env', () => {
     expect(env.getStringIn('SET', ['a', 'b'])).to.equal('a');
   });
 
-  it('should get a string envar from a known set of values from an enum with differently cased keys', () => {
-    enum Expected {
-      A,
-      B,
-    }
-    expect(env.getStringIn('SET3', Object.keys(Expected))).to.equal('b');
+  it('should get a string envar from a known set of values with differently cased keys', () => {
+    expect(env.getStringIn('SET3', ['A', 'B'])).to.equal('b');
   });
 
   it('should get undefined given an invalid member of a known set of values', () => {
@@ -84,20 +80,20 @@ describe('Env', () => {
   });
 
   it('should get a string envar as a key of an enum, with a transform', () => {
-    enum Mode {
-      TEST = 'test',
-      DEMO = 'demo',
-    }
+    const Mode = {
+      TEST: 'test',
+      DEMO: 'demo',
+    } as const;
     const value = env.getKeyOf('ENUM', Mode, Mode.DEMO, (v) => v.toUpperCase());
     expect(value).to.equal('TEST');
     expect(Mode[value]).to.equal(Mode.TEST);
   });
 
   it('should get a default for an undefined envar from an enum, with a transform', () => {
-    enum Mode {
-      TEST = 'test',
-      DEMO = 'demo',
-    }
+    const Mode = {
+      TEST: 'test',
+      DEMO: 'demo',
+    } as const;
     const value = env.getKeyOf('ENUM2', Mode, Mode.DEMO, (v) => v.toUpperCase());
     expect(value).to.equal('DEMO');
     expect(Mode[value]).to.equal(Mode.DEMO);
