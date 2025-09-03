@@ -1,3 +1,12 @@
+## [3.2.4](https://github.com/forcedotcom/kit/compare/3.2.3...3.2.4) (2025-09-03)
+
+
+### Bug Fixes
+
+* oss compliance ([1d7cda1](https://github.com/forcedotcom/kit/commit/1d7cda148eeb233de0c52e7b9304cca211b3eebc))
+
+
+
 ## [3.2.3](https://github.com/forcedotcom/kit/compare/3.2.2...3.2.3) (2024-09-12)
 
 
