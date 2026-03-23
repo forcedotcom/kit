@@ -1,5 +1,5 @@
 /*
- * Copyright 2025, Salesforce, Inc.
+ * Copyright 2026, Salesforce, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ namespace Config {
   export type Options = {
     fooEnabled: boolean;
     doAsyncThing: () => Promise<void>;
-  }
+  };
 }
 
 class SubConfig extends Config<SubConfig.Options> {
@@ -59,7 +59,7 @@ class SubConfig extends Config<SubConfig.Options> {
 namespace SubConfig {
   export type Options = {
     barEnabled: boolean;
-  } & Config.Options
+  } & Config.Options;
 }
 
 class OptionalConfig extends AsyncOptionalCreatable<OptionalConfig.Options> {
@@ -83,7 +83,7 @@ class OptionalConfig extends AsyncOptionalCreatable<OptionalConfig.Options> {
 namespace OptionalConfig {
   export type Options = {
     bazEnabled: boolean;
-  }
+  };
 }
 
 class NoOptionsConfig extends AsyncOptionalCreatable {
