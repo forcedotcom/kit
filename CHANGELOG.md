@@ -1,3 +1,12 @@
+## [3.2.5](https://github.com/forcedotcom/kit/compare/3.2.4...3.2.5) (2026-03-23)
+
+
+### Bug Fixes
+
+* **deps:** bump cross-spawn from 7.0.3 to 7.0.6 ([0914d4f](https://github.com/forcedotcom/kit/commit/0914d4f1481ff94ccaaaef9615428b11d7ec85ae))
+
+
+
 ## [3.2.4](https://github.com/forcedotcom/kit/compare/3.2.3...3.2.4) (2025-09-03)
 
 
