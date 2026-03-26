@@ -1,3 +1,12 @@
+## [3.2.6](https://github.com/forcedotcom/kit/compare/3.2.5...3.2.6) (2026-03-26)
+
+
+### Bug Fixes
+
+* **deps:** bump flatted from 3.2.2 to 3.4.2 ([21c6ae3](https://github.com/forcedotcom/kit/commit/21c6ae331d88e8a6a53d8250c9a61109254a9b86))
+
+
+
 ## [3.2.5](https://github.com/forcedotcom/kit/compare/3.2.4...3.2.5) (2026-03-23)
 
 
