@@ -1,3 +1,15 @@
+# [4.0.0](https://github.com/forcedotcom/kit/compare/3.2.6...4.0.0) (2026-07-29)
+
+
+* feat!: require Node >=22.0.0, drop EOL Node versions @W-23480655@ ([ac1b019](https://github.com/forcedotcom/kit/commit/ac1b019667beb82cd5844f63093d35d228652381))
+
+
+### BREAKING CHANGES
+
+* raises minimum Node to >=22.0.0
+
+
+
 ## [3.2.6](https://github.com/forcedotcom/kit/compare/3.2.5...3.2.6) (2026-03-26)
 
 
