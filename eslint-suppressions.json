@@ -1,9 +1,4 @@
 {
-  "src/json.ts": {
-    "@typescript-eslint/ban-types": {
-      "count": 1
-    }
-  },
   "src/nodash/external.ts": {
     "@typescript-eslint/no-unsafe-call": {
       "count": 13

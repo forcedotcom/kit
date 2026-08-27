@@ -95,7 +95,6 @@ export function parseJsonMap<T extends JsonMap = JsonMap>(data: string, jsonPath
  * @throws {@link JsonStringifyError} If the object contains circular references or causes
  * other JSON stringification errors.
  */
-// eslint-disable-next-line @typescript-eslint/ban-types
 export function cloneJson<T extends object>(obj: T): T {
   try {
     return JSON.parse(JSON.stringify(obj)) as T;
