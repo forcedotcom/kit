@@ -242,7 +242,7 @@ export class Env {
    */
   public getNumber(key: string, def: number): number;
   public getNumber(key: string, def?: undefined): Optional<number>;
-  public getNumber(key: string, def?: number | undefined): Optional<number> {
+  public getNumber(key: string, def?: number): Optional<number> {
     const value = this.getString(key);
     if (value) {
       const num = toNumber(value);
