@@ -30,13 +30,19 @@
     "test:only": "wireit"
   },
   "dependencies": {
-    "@salesforce/ts-types": "^3.0.0"
+    "@salesforce/ts-types": "^3.2.0"
   },
   "devDependencies": {
-    "@salesforce/dev-scripts": "^11.0.4",
+    "@salesforce/dev-scripts": "^14.0.0",
+    "@types/chai": "^4.3.17",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^18",
+    "@types/sinon": "^10.0.20",
+    "eslint": "^10.4.0",
+    "eslint-config-salesforce-typescript": "^6.0.0",
     "lodash-cli": "^4.17.5",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.4"
+    "typescript": "^6.0.3"
   },
   "wireit": {
     "build": {
@@ -75,6 +81,7 @@
         "src/**/*.ts",
         "test/**/*.ts",
         "messages/**",
+        "**/eslint.config.*",
         "**/.eslint*",
         "**/tsconfig.json"
       ],

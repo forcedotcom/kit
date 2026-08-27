@@ -1,0 +1,38 @@
+{
+  "src/json.ts": {
+    "@typescript-eslint/ban-types": {
+      "count": 1
+    }
+  },
+  "src/nodash/external.ts": {
+    "@typescript-eslint/no-unsafe-call": {
+      "count": 13
+    },
+    "@typescript-eslint/no-unsafe-member-access": {
+      "count": 13
+    },
+    "@typescript-eslint/no-unsafe-return": {
+      "count": 13
+    }
+  },
+  "src/nodash/internal.ts": {
+    "@typescript-eslint/switch-exhaustiveness-check": {
+      "count": 1
+    }
+  },
+  "src/nodash/support.ts": {
+    "@typescript-eslint/no-empty-object-type": {
+      "count": 1
+    }
+  },
+  "src/throttledPromiseAll.ts": {
+    "@typescript-eslint/prefer-promise-reject-errors": {
+      "count": 2
+    }
+  },
+  "test/settleAll.test.ts": {
+    "@typescript-eslint/prefer-promise-reject-errors": {
+      "count": 4
+    }
+  }
+}

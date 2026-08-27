@@ -26,7 +26,6 @@ describe('throttledPromiseAll', () => {
   it('should execute promises in order', async () => {
     const throttledPromiseAll: ThrottledPromiseAll<number, number> = new ThrottledPromiseAll({ concurrency: 1 });
     for (const i of [1, 2, 3, 4, 5]) {
-      // eslint-disable-next-line no-await-in-loop
       throttledPromiseAll.add(
         i,
         (source) => new Promise((resolve) => setTimeout(() => resolve(source + 1), (5 - i) * 100))
@@ -39,7 +38,6 @@ describe('throttledPromiseAll', () => {
   it('should execute promises in groups of 2 - auto start', async () => {
     const throttledPromiseAll: ThrottledPromiseAll<number, number> = new ThrottledPromiseAll({ concurrency: 2 });
     for (const i of [1, 2, 3, 4, 5]) {
-      // eslint-disable-next-line no-await-in-loop
       throttledPromiseAll.add(i, numberProducer);
     }
     await throttledPromiseAll.all();
@@ -49,7 +47,6 @@ describe('throttledPromiseAll', () => {
   it('should execute promises in groups of 10 - auto start', async () => {
     const throttledPromiseAll: ThrottledPromiseAll<number, number> = new ThrottledPromiseAll({ concurrency: 10 });
     for (const i of [1, 2, 3, 4, 5]) {
-      // eslint-disable-next-line no-await-in-loop
       throttledPromiseAll.add(i, numberProducer);
     }
     await throttledPromiseAll.all();
