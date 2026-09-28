@@ -1,3 +1,12 @@
+## [4.0.1](https://github.com/forcedotcom/kit/compare/4.0.0...4.0.1) (2026-09-28)
+
+
+### Bug Fixes
+
+* **deps:** bump browserslist from 4.23.3 to 4.28.9 ([b2e942a](https://github.com/forcedotcom/kit/commit/b2e942a52518d4019168c2934735ddacd9f18481))
+
+
+
 # [4.0.0](https://github.com/forcedotcom/kit/compare/3.2.6...4.0.0) (2026-07-29)
 
 
