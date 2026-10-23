@@ -1,3 +1,12 @@
+## [4.0.3](https://github.com/forcedotcom/kit/compare/4.0.2...4.0.3) (2026-10-23)
+
+
+### Bug Fixes
+
+* **deps:** bump source-map-js from 1.2.1 to 1.2.2 ([b33186e](https://github.com/forcedotcom/kit/commit/b33186ee0af520f56ba4f33b9e4581478aa0f3eb))
+
+
+
 ## [4.0.2](https://github.com/forcedotcom/kit/compare/4.0.1...4.0.2) (2026-10-23)
 
 
