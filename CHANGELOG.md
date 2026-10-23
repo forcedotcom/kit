@@ -1,3 +1,12 @@
+## [4.0.2](https://github.com/forcedotcom/kit/compare/4.0.1...4.0.2) (2026-10-23)
+
+
+### Bug Fixes
+
+* **deps:** bump markdown-it from 14.3.0 to 14.3.3 ([24b9494](https://github.com/forcedotcom/kit/commit/24b94941a8f4e68489e6b50d59dfcda2e8c69d81))
+
+
+
 ## [4.0.1](https://github.com/forcedotcom/kit/compare/4.0.0...4.0.1) (2026-09-28)
 
 
