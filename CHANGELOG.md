@@ -1,3 +1,12 @@
+## [4.0.7](https://github.com/forcedotcom/kit/compare/4.0.6...4.0.7) (2026-10-24)
+
+
+### Bug Fixes
+
+* **deps:** bump minimatch from 3.1.2 to 3.1.5 ([b21565a](https://github.com/forcedotcom/kit/commit/b21565a8b9508403c6c0d074416bb93b2b13e77e))
+
+
+
 ## [4.0.6](https://github.com/forcedotcom/kit/compare/4.0.5...4.0.6) (2026-10-24)
 
 
