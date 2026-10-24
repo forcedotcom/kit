@@ -1,3 +1,12 @@
+## [4.0.4](https://github.com/forcedotcom/kit/compare/4.0.3...4.0.4) (2026-10-24)
+
+
+### Bug Fixes
+
+* **deps:** bump brace-expansion from 1.1.11 to 1.1.21 ([1e305a8](https://github.com/forcedotcom/kit/commit/1e305a88142ccf841bc0d6ede3c5f6b7165ce205))
+
+
+
 ## [4.0.3](https://github.com/forcedotcom/kit/compare/4.0.2...4.0.3) (2026-10-23)
 
 
