@@ -1,3 +1,12 @@
+## [4.0.5](https://github.com/forcedotcom/kit/compare/4.0.4...4.0.5) (2026-10-24)
+
+
+### Bug Fixes
+
+* **deps:** bump js-yaml from 3.14.1 to 3.15.2 ([80e4dea](https://github.com/forcedotcom/kit/commit/80e4dea84dd33060b43ffcc79c96de59ba5e08cb))
+
+
+
 ## [4.0.4](https://github.com/forcedotcom/kit/compare/4.0.3...4.0.4) (2026-10-24)
 
 
