@@ -1,3 +1,12 @@
+## [4.0.6](https://github.com/forcedotcom/kit/compare/4.0.5...4.0.6) (2026-10-24)
+
+
+### Bug Fixes
+
+* **deps:** bump picomatch from 2.3.1 to 2.3.2 ([f764479](https://github.com/forcedotcom/kit/commit/f764479c07aa972e3a2c3c854edbd30425a5f457))
+
+
+
 ## [4.0.5](https://github.com/forcedotcom/kit/compare/4.0.4...4.0.5) (2026-10-24)
 
 
